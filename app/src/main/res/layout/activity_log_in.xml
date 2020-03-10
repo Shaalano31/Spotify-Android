@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".LogInActivity">
+
+    <Button
+        android:id="@+id/loginLoginpage"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        android:onClick="UsernameLogInClick"
+        android:text="Log in"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="516dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="60dp"
+        android:scaleType="fitStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/spotify" />
+
+    <TextView
+        android:id="@+id/spotify"
+        android:layout_width="216dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="48dp"
+        android:text="Spotify"
+        android:textColor="#FFFFFF"
+        android:textSize="60dp"
+        app:fontFamily="@font/lineto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/usernameLoginTextview"
+        android:layout_width="298dp"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:hint="Username"
+        android:textColorHint="#666565"
+        android:textSize="24sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="249dp" />
+
+    <EditText
+        android:id="@+id/passwordLoginTextview"
+        android:layout_width="298dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="#666565"
+        android:textSize="24sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="338dp" />
+
+    <EditText
+        android:id="@+id/forgotPasswordLoginPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:onClick="ForgotPasswordClickLogin"
+        android:text="Forgot Password"
+        android:textColor="#1DB954"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="573dp" />
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="75dp"
+        android:layout_height="57dp"
+        android:onClick="GoBackLogin"
+        app:srcCompat="@drawable/gobackgreen"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="3dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

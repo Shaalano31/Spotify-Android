@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".MainActivity">
 
     <Button
@@ -36,20 +37,25 @@
         android:id="@+id/imageView2"
         android:layout_width="100dp"
         android:layout_height="112dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="60dp"
         android:scaleType="fitStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/spotify" />
 
     <TextView
-        android:id="@+id/Spotify"
+        android:id="@+id/spotify"
         android:layout_width="216dp"
         android:layout_height="81dp"
         android:layout_marginTop="60dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp"
         android:text="Spotify"
         android:textColor="#FFFFFF"
         android:textSize="60dp"
+        app:fontFamily="@font/lineto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />
