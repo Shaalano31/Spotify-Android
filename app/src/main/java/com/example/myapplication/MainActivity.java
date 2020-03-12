@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void LogIn(View view) {
         // go to log in screen
+        Intent intent = new Intent(getApplicationContext(),LogInActivity.class);
+        startActivity(intent);
     }
 
     public void continueUsingFacebook(View view) {
