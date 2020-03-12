@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.spotify;
 
 import android.content.Context;
 
