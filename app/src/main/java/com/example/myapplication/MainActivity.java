@@ -10,8 +10,24 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button next3;
+
     public void SignUp(View view) {
-        // go to sign up screen
+
+        next3 = findViewById(R.id.signup);
+
+        next3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent I = new Intent(MainActivity.this, signUp.class);
+                startActivity(I);
+
+
+
+            }
+        });
 
     }
 
@@ -41,4 +57,8 @@ public class MainActivity extends AppCompatActivity {
         // Set the color
         root.setBackgroundColor(getResources().getColor(android.R.color.black));
     }
+
+
+
+
 }
