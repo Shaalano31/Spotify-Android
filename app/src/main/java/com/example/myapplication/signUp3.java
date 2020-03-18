@@ -3,13 +3,21 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.Date;
 
 public class signUp3 extends AppCompatActivity {
 
@@ -22,13 +30,17 @@ public class signUp3 extends AppCompatActivity {
     int month ;
     int year;
     private DatePickerDialog.OnDateSetListener Mydatasetlistener ;
-
+    Calendar dob = Calendar.getInstance();
+    Calendar today = Calendar.getInstance();
+    int age;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up7);
         done = (Button) findViewById(R.id.doneButton);
         dateofBirth = (Button) findViewById(R.id.dateofbirthButton);
+
+
 
         dateofBirth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,5 +75,114 @@ public class signUp3 extends AppCompatActivity {
                         .append(" "));
             }
         };
+
+
+
+
+
+
+
+
+
+
+
+        // calculating age & validations
+
+        dateofBirth.addTextChangedListener(new TextWatcher()  // for every change in the text
+        {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,    // must be there or the func of text watcher will giver error
+                                      int count)                                // not used
+            {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, // must be there or the func of text watcher will giver error
+                                          int after)                            // not used
+            {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+
+            {
+
+
+                age = today.get(Calendar.YEAR) - year ;
+
+                 if (age<=0)
+
+                {
+                    Toast.makeText(getApplicationContext(), "Please enter valid bithdate ", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (age <12)
+                {
+
+                    Toast.makeText(getApplicationContext(), " you are under age sorry cant proceed ", Toast.LENGTH_SHORT).show();
+                }
+
+                age = today.get(Calendar.YEAR) - year  ;
+                if ( today.get(Calendar.MONTH)< month)
+
+                {
+                    age--;
+                    Log.i("age cases", "month still not there ");
+
+                }
+                else if (today.get(Calendar.MONTH)> month)
+                {
+
+                }
+                else if (today.get(Calendar.DAY_OF_MONTH)<day)
+
+                {
+                    age--;
+                    Log.i("age cases", "same month but still not yet");
+                }
+
+                done .setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+
+                   if (age>12) {
+
+                       //Intent i = new Intent(signUp3.this, homescreen.class);   //the home screen shouldbe here
+                      // startActivity(i);
+
+                       Log.i("done clicked","age >12 " );
+
+
+                       Log.i("done clicked", " " + new StringBuilder().append(age +" ") );
+
+
+
+
+                   }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Please enter valid bithdate ", Toast.LENGTH_SHORT).show();
+                        Log.i("done clicked","age nooooooo "  );
+                    }
+
+                }
+
+            });
+
+
+
+            }
+
+
+
+        });
+
+
+
+
+
     }
 }
