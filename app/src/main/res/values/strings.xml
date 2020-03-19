@@ -2,4 +2,16 @@
     <string name="app_name">Spotify</string>
     <string name="facebook_app_id">1363108930535264</string>
     <string name="fb_login_protocol_scheme">fb1363108930535264</string>
+    <string name="username">Username</string>
+    <string name="create_your_username">Create your username</string>
+    <string name="password">Password</string>
+    <string name="create_your_password">Create your password</string>
+    <string name="next">Next</string>
+    <string name="email">Email</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="gender">Gender</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="done">Done</string>
+    <string name="click_to_enter_your_date_of_brith">click to enter your date of brith</string>
+    <string name="click_to_enter_the_date_of_birth">click to enter the date of birth</string>
 </resources>

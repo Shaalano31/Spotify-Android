@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
+import com.example.spotify.LogInActivity;
+import com.example.spotify.signUp;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -33,6 +36,32 @@ public class MainActivity extends AppCompatActivity {
     AccessToken accessToken;
     //LoginManager loginManager;
 
+    Button next3;
+
+    public void SignUp(View view) {
+
+        next3 = findViewById(R.id.signup);
+
+        next3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent I = new Intent(MainActivity.this, signUp.class);
+                startActivity(I);
+
+
+
+            }
+        });
+
+    }
+
+    public void LogIn(View view) {
+        // go to log in screen
+        Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+        startActivity(intent);
+    }
     private static final String EMAIL = "email";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,14 +118,6 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         callbackManager.onActivityResult(requestCode, resultCode, data);
-    }
-
-    public void LogIn (View view) {
-
-    }
-
-    public void SignUp (View view) {
-
     }
 
 
