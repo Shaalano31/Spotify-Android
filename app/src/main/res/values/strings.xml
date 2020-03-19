@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Spotify</string>
+    <string name="facebook_app_id">1363108930535264</string>
+    <string name="fb_login_protocol_scheme">fb1363108930535264</string>
     <string name="username">Username</string>
     <string name="create_your_username">Create your username</string>
     <string name="password">Password</string>

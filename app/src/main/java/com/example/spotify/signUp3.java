@@ -1,9 +1,6 @@
-package com.example.myapplication;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.spotify;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.util.Calendar;
@@ -14,10 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Date;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class signUp3 extends AppCompatActivity {
 
