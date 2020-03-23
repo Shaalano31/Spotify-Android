@@ -49,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent I = new Intent(MainActivity.this, signUp.class);
                 startActivity(I);
-
-
-
             }
         });
 
@@ -62,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
         startActivity(intent);
     }
+
     private static final String EMAIL = "email";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,10 +136,11 @@ public class MainActivity extends AppCompatActivity {
                     String email = object.getString("email");
                     Log.i("Details", "ENTER");
                     Log.i("Details", email);
-                    if(email.equals("khaled.shaalan@hotmail.com"))
-                    {
-                        Log.i("Details", "Success");
-                    }
+                    // go to home screen
+
+                    Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+                    startActivity(intent);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.i("Details", "SAD");
