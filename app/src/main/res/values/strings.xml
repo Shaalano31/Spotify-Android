@@ -14,4 +14,5 @@
     <string name="done">Done</string>
     <string name="click_to_enter_your_date_of_brith">click to enter your date of brith</string>
     <string name="click_to_enter_the_date_of_birth">click to enter the date of birth</string>
+    <string name="log_in">Log in</string>
 </resources>

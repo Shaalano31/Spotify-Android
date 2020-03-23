@@ -106,9 +106,10 @@ public class LogInActivity extends AppCompatActivity implements View.OnKeyListen
         String userName = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         //if pressed on the background or the logo and the keyboard is up, hide it
-        if (view.getId() == R.id.spotifyImageView || view.getId() == R.id.spotifyLogo || view.getId() == R.id.backgroundLayout) {
-
-            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        if (view.getId() == R.id.spotifyImageView || view.getId() == R.id.backgroundLayout) {
+            if(inputMethodManager.isAcceptingText()) {
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
         } else if (view.getId() == R.id.forgotPasswordLoginPage) {
             Intent intent = new Intent(getApplicationContext(), ForgotPasswordActivity.class);
             startActivity(intent);
@@ -151,11 +152,9 @@ public class LogInActivity extends AppCompatActivity implements View.OnKeyListen
         forgotPasswordTextView=findViewById(R.id.forgotPasswordLoginPage);
 
         ImageView spotifyImageView = findViewById(R.id.spotifyImageView);
-        TextView spotifyLogo = findViewById(R.id.spotifyLogo);
         ConstraintLayout constraintLayout = findViewById(R.id.backgroundLayout);
         constraintLayout.setOnClickListener(this);
         spotifyImageView.setOnClickListener(this);
-        spotifyLogo.setOnClickListener(this);
         //To recognize pressed keys and retrieve and handle them
         passwordEditText.setOnKeyListener(this);
 
