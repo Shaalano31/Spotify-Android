@@ -127,10 +127,11 @@ public class LogInActivity extends AppCompatActivity implements View.OnKeyListen
                 if (listdata.contains(requestDetails)) {
                         //to type the code that directs to the homepage
                         Toast.makeText(getApplicationContext(), "YAY", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+                    startActivity(intent);
 
                 } else {
 
-                    Log.i(requestDetails, listdata.get(1));
                     Toast.makeText(getApplicationContext(), "Wrong username or password.", Toast.LENGTH_SHORT).show();
 
                 }
