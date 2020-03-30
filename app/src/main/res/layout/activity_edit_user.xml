@@ -10,7 +10,7 @@
 
 
     <EditText
-        android:id="@+id/passworEditText3"
+        android:id="@+id/newpassworEditText"
         android:layout_width="291dp"
         android:layout_height="49dp"
         android:background="@drawable/edittextback"

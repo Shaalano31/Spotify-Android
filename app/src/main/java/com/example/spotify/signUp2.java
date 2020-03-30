@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,6 +24,7 @@ public class signUp2 extends AppCompatActivity {
     Button next3;
     String valid_email;
     boolean missing_info ;
+    String selected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +50,7 @@ public class signUp2 extends AppCompatActivity {
 
         // GET SELECTED
 
-        String selected = gender.getSelectedItem().toString();
+         selected = gender.getSelectedItem().toString();
 
 
         //check email
@@ -120,11 +122,12 @@ public class signUp2 extends AppCompatActivity {
                     {
                         Intent I = new Intent(signUp2.this, signUp3.class);
 
-                       // Intent oldIntent  = getIntent();  // getting the object we created in the last activity
-                       // user= (userInfo)oldIntent.getParcelableExtra("userinfo") ;
-                       // user.setEmail(email.toString());  // passing the userinfo to another activity
-                       // user.setGender(gender.toString());
-                        // I.putExtra("userinfo", user);
+                        Intent oldIntent  = getIntent();  // getting the object we created in the last activity
+                        user= (userInfo)oldIntent.getParcelableExtra("userinfo") ;
+                        user.setEmail(valid_email);  // passing the userinfo to another activity
+                        user.setGender(selected);
+                        Log.i("done clicked"," " + user.password + " " + user.username + " " + user.email+ " " + user.gender );
+                         I.putExtra("userinfo", user);
 
 
                         startActivity(I);

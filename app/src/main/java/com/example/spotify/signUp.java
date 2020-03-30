@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -152,9 +153,11 @@ public class signUp extends AppCompatActivity {
                     Intent i = new Intent(signUp.this, signUp2.class);
 
 
-                   // user.setPassword(password.toString());   // passing the userinfo to another activity
-                    //user.setUsername(username.toString());
-                   // i.putExtra("userinfo", user);
+                   user = new userInfo();
+                    user.password =valid_Password ;   // passing the userinfo to another activity
+                    user.username =valid_username;
+                    Log.i("done clicked"," " + valid_Password + " " + valid_username  );
+                   i.putExtra("userinfo", user);
 
                     startActivity(i);
 

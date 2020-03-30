@@ -12,6 +12,10 @@ public class userInfo implements Parcelable {
     public String gender;
     public String dateOfBirth;  // day-moth- year
 
+    public userInfo() {
+
+    }
+
     public String getEmail() {
         return email;
     }

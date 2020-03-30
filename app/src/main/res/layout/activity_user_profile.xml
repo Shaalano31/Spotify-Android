@@ -229,7 +229,7 @@
             android:text="User Name"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="20dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline_top1"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="0.0"
