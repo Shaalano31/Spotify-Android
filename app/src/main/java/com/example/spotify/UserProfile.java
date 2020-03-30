@@ -5,28 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
 
-public class HomeScreen extends AppCompatActivity {
+public class UserProfile extends AppCompatActivity {
 
-    ImageView settings ;
-
+    TextView editProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_screen);
+        setContentView(R.layout.activity_user_profile);
 
-        settings= findViewById(R.id.settingsImageview);
+        editProfile =  (TextView) findViewById(R.id.EditProfiletextView);
 
-        settings.setOnClickListener(new View.OnClickListener() {
+        editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomeScreen.this, Settings.class);
+                Intent i = new Intent(UserProfile.this, EditUser.class);
                 startActivity(i);
             }
         });
     }
-
-
-
 }

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class signUp extends AppCompatActivity {
 
-
+    userInfo user;
     EditText username;
     EditText password;
     Button next2;
@@ -148,7 +148,14 @@ public class signUp extends AppCompatActivity {
                 if (missing_info == false && missing_info1 == false && ! username.getText().toString().trim().isEmpty() && ! password.getText().toString().trim().isEmpty() )
                 {
 
+
                     Intent i = new Intent(signUp.this, signUp2.class);
+
+
+                   // user.setPassword(password.toString());   // passing the userinfo to another activity
+                    //user.setUsername(username.toString());
+                   // i.putExtra("userinfo", user);
+
                     startActivity(i);
 
 

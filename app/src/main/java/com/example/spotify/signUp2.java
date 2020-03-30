@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class signUp2 extends AppCompatActivity {
-
+     userInfo user;
     EditText email;
     Spinner gender;
     Button next3;
@@ -119,6 +119,14 @@ public class signUp2 extends AppCompatActivity {
                     if (missing_info == false)
                     {
                         Intent I = new Intent(signUp2.this, signUp3.class);
+
+                       // Intent oldIntent  = getIntent();  // getting the object we created in the last activity
+                       // user= (userInfo)oldIntent.getParcelableExtra("userinfo") ;
+                       // user.setEmail(email.toString());  // passing the userinfo to another activity
+                       // user.setGender(gender.toString());
+                        // I.putExtra("userinfo", user);
+
+
                         startActivity(I);
 
 
