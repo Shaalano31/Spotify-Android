@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserProfile"></activity>
+        <activity android:name=".homeFragment"></activity>
+        <activity android:name=".UserProfile" />
         <activity android:name=".EditUser" />
         <activity android:name=".Settings" />
         <activity android:name=".HomeScreen" />

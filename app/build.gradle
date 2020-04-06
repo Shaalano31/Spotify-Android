@@ -30,6 +30,7 @@ dependencies {
 
     implementation 'com.facebook.android:facebook-login:[5,6)'
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+    //implementation 'com.androidx.recyclerview:recyclerview:1.0.0'
 
 
 }
