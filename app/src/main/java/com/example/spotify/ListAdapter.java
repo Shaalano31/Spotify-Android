@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,17 +11,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class ListAdapter extends BaseAdapter {
 
     Context context;
-    private final String [] values;
-    private final String [] numbers;
-    private final int [] images;
+    List<String> values;
+    List<String> numbers;
+    List<Integer> images;
 
-    public ListAdapter(Context context, String [] values, String [] numbers, int [] images){
+    public ListAdapter(Context context, List<String> values, List<String> numbers, List<Integer> images){
         //super(context, R.layout.single_list_app_item, utilsArrayList);
         this.context = context;
         this.values = values;
@@ -30,9 +29,10 @@ public class ListAdapter extends BaseAdapter {
         this.images = images;
     }
 
+
     @Override
     public int getCount() {
-        return values.length;
+        return values.size();
     }
 
     @Override
@@ -52,7 +52,6 @@ public class ListAdapter extends BaseAdapter {
 
         ViewHolder viewHolder;
 
-        final View result;
 
         if (convertView == null) {
 
@@ -60,20 +59,15 @@ public class ListAdapter extends BaseAdapter {
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(R.layout.single_list_item, parent, false);
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.aNametxt);
-            viewHolder.txtVersion = (TextView) convertView.findViewById(R.id.aVersiontxt);
             viewHolder.icon = (ImageView) convertView.findViewById(R.id.appIconIV);
-
-            result=convertView;
-
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
-            result=convertView;
         }
 
-        viewHolder.txtName.setText(values[position]);
-        viewHolder.txtVersion.setText(numbers[position]);
-        viewHolder.icon.setImageResource(images[position]);
+        viewHolder.txtName.setText(values.get(position));
+        viewHolder.txtVersion.setText(numbers.get(position));
+        viewHolder.icon.setImageResource(images.get(position));
 
         return convertView;
     }

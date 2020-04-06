@@ -1,84 +1,127 @@
 package com.example.spotify;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Playlist extends AppCompatActivity {
 
-    int[] images = {R.drawable.createplaylistplus,R.drawable.likes};
-    String[] playlistVersion = {"Create Playlist","Likes"};
-    String[] artistVersion = {"Billie Eilish","Justin"};
-    String[] albumVersion = {"V","J"};
-    String[] versionNumber = {"Discover Yourself", "24 Songs"};
-    ListView playlistView;
-    ListView artistView;
-    ListView albumView;
 
-    ListAdapter playistAdapter;
-    ListAdapter artistAdapter;
-    ListAdapter albumAdapter;
+    static ArrayList<String> playlistImages;
+    static ArrayList<String> playlistVersion;
+    static ArrayList<String> artistImages;
+    static ArrayList<String>  artistVersion;
+    static ArrayList<String> albumImages;
+    static ArrayList<String>  albumVersion;
+    static ArrayList<String>  versionNumber;
+
+    RelativeLayout createPlaylist;
+
+    RecyclerView playlistView;
+    RecyclerView artistView;
+    RecyclerView albumView;
+
+    RecyclerViewAdapter playistAdapter;
+    RecyclerViewAdapter artistAdapter;
+    RecyclerViewAdapter albumAdapter;
 
     Button playlistButton;
     Button artistButton;
     Button albumButton;
     boolean playlistClicked=true, artistClicked=false, albumClicked=false;      //used to check last button clicked from playlist, artist, albums
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playlist);
-
         playlistView = findViewById(R.id.playlistListView);
         artistView = findViewById(R.id.artistListView);
         albumView = findViewById(R.id.albumListView);
+        createPlaylist = findViewById(R.id.createPlaylistButtonLayout);
 
-        playistAdapter = new ListAdapter(Playlist.this, playlistVersion, versionNumber, images);
-        playlistView.setAdapter(playistAdapter);
+        playlistVersion= new ArrayList<>();
+        artistVersion = new ArrayList<>();
+        albumVersion = new ArrayList<>();
+        versionNumber= new ArrayList<>();
+        playlistImages = new ArrayList<>();
+        artistImages = new ArrayList<>();
+        albumImages = new ArrayList<>();
 
-        playlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        playlistVersion.add("Likes");
 
-                Toast.makeText(Playlist.this, playlistVersion[i]+" "+versionNumber[i], Toast.LENGTH_SHORT).show();
+        versionNumber.add("1.0");
+        versionNumber.add("1.0");
 
-            }
-        });
+        artistVersion.add("Billie Eilish");
+        artistImages.add("https://i.insider.com/5e40b4aedf2f662c42129883?width=1100&format=jpeg&auto=webp");
 
-        artistAdapter = new ListAdapter(Playlist.this, artistVersion, versionNumber, images);
+        albumVersion.add("Where do we go");
+        albumImages.add("https://images-eu.ssl-images-amazon.com/images/I/41yZ9kFXtdL._SX342_QL70_ML2_.jpg");
+
+        playlistImages.add(Integer.toString(R.drawable.likes));
+
+        RecyclerViewAdapter playlistAdapter = new RecyclerViewAdapter(this, playlistVersion, playlistImages,false,true);
+        playlistView.setAdapter(playlistAdapter);
+        playlistView.setLayoutManager(new LinearLayoutManager(this));
+
+        RecyclerViewAdapter artistAdapter = new RecyclerViewAdapter(this, artistVersion, artistImages,true,true);
+        artistAdapter.setCircular(true);
         artistView.setAdapter(artistAdapter);
+        artistView.setLayoutManager(new LinearLayoutManager(this));
 
-        artistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Toast.makeText(Playlist.this, artistVersion[i]+" "+versionNumber[i], Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        albumAdapter = new ListAdapter(Playlist.this, albumVersion, versionNumber, images);
+        RecyclerViewAdapter albumAdapter = new RecyclerViewAdapter(this, albumVersion, albumImages,true,true);
+        albumAdapter.setCircular(true);
         albumView.setAdapter(albumAdapter);
+        albumView.setLayoutManager(new LinearLayoutManager(this));
 
-        albumView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Toast.makeText(Playlist.this, albumVersion[i]+" "+versionNumber[i], Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
         playlistButton = findViewById(R.id.playlistButton);
         artistButton = findViewById(R.id.artistButton);
         albumButton = findViewById(R.id.albumButton);
         playlistButton.setTextColor(Color.parseColor("#1DB954"));
+    }
+
+
+    public void createPlaylistButtonClick(View v){
+        Intent intent = new Intent(this, CreatePlaylist.class);
+        this.startActivityForResult(intent,1);
+    }
+
+
+    public void addItem(String item,int key){       //key is used to identify which string array to add in 1:playlist 2:artist 3:album
+        if(key==0){
+            playlistVersion.add(item);
+            playlistImages.add(Integer.toString(R.drawable.likes));
+            versionNumber.add("");
+            playistAdapter = new RecyclerViewAdapter(this, playlistVersion, playlistImages,false,true);
+            playlistView.setAdapter(playistAdapter);
+        }
+        else if(key==1){
+            artistVersion.add(item);
+        }
+        else
+        {
+            albumVersion.add(item);
+        }
     }
 
     public void onClick(View v){
@@ -96,6 +139,10 @@ public class Playlist extends AppCompatActivity {
                 playlistView.animate().translationXBy(1000).setDuration(300);     //view the playlist and translate it to right, and hide artist alpha
                 playlistView.animate().alpha(100).setDuration(300);
 
+                createPlaylist.setVisibility(View.VISIBLE);
+                createPlaylist.animate().translationXBy(1000).setDuration(300);     //view the playlist and translate it to right, and hide artist alpha
+                createPlaylist.animate().alpha(100).setDuration(300);
+
                 artistClicked=false;
             }
             else if(albumClicked){                                              //if playlist clicked while were on albums
@@ -108,6 +155,10 @@ public class Playlist extends AppCompatActivity {
                 playlistView.animate().translationXBy(1000).setDuration(300);
                 playlistView.animate().alpha(100).setDuration(300);
 
+                createPlaylist.setVisibility(View.VISIBLE);
+                createPlaylist.animate().translationXBy(1000).setDuration(300);
+                createPlaylist.animate().alpha(100).setDuration(300);
+
                 albumClicked=false;
             }
             playlistClicked=true;
@@ -118,6 +169,9 @@ public class Playlist extends AppCompatActivity {
                 playlistView.animate().translationXBy(-1000).setDuration(300);
                 playlistView.animate().alpha(0).setDuration(300);
                 playlistView.setVisibility(View.INVISIBLE);
+                createPlaylist.animate().translationXBy(-1000).setDuration(300);
+                createPlaylist.animate().alpha(0).setDuration(300);
+                createPlaylist.setVisibility(View.INVISIBLE);
 
                 artistView.setVisibility(View.VISIBLE);
                 artistView.animate().alpha(100).setDuration(300);
@@ -142,6 +196,9 @@ public class Playlist extends AppCompatActivity {
                 playlistView.animate().translationXBy(-1000).setDuration(300);
                 playlistView.animate().alpha(0).setDuration(300);
                 playlistView.setVisibility(View.INVISIBLE);
+                createPlaylist.animate().translationXBy(-1000).setDuration(300);
+                createPlaylist.animate().alpha(0).setDuration(300);
+                createPlaylist.setVisibility(View.INVISIBLE);
 
                 artistView.animate().translationXBy(-1000).setDuration(300);
 
@@ -164,4 +221,18 @@ public class Playlist extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==1){
+            if(resultCode==RESULT_OK){
+                String newPlaylist = data.getStringExtra("playlist name");
+                addItem(newPlaylist,0);
+            }
+            else if(resultCode==RESULT_CANCELED){
+                Toast.makeText(this,"Cancelled",Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
