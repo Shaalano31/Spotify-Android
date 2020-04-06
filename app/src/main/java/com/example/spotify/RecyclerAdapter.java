@@ -1,5 +1,4 @@
 package com.example.spotify;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,12 +19,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     private ArrayList<String> names ;
     private ArrayList<String> picUrls ;
-    private  Context context;
+    private HomeScreen context;
 
     // data is passed into the constructor
 
 
-    public RecyclerAdapter(ArrayList<String> names, ArrayList<String> picUrls, Context context) {
+    public RecyclerAdapter(ArrayList<String> names, ArrayList<String> picUrls, HomeScreen context) {
         this.names = names;
         this.picUrls = picUrls;
         this.context = context;
@@ -88,7 +87,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         /// decleraing contents of home playlist of one item
         ImageView playlistPhoto;
         TextView playlistTitle;

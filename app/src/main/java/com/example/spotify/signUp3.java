@@ -151,7 +151,7 @@ public class signUp3 extends AppCompatActivity {
 
                    if (age>12) {
 
-                       Intent i = new Intent(signUp3.this, homeFragment.class);   //the home screen shouldbe here
+                       Intent i = new Intent(signUp3.this, HomeScreen.class);   //the home screen shouldbe here
                        Intent oldIntent  = getIntent();  // getting the object we created in the last activity
                        user= (userInfo)oldIntent.getParcelableExtra("userinfo") ;
                        user.setDateOfBirth(valid_date);  // passing the userinfo to another activity
