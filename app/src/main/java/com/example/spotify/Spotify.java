@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface Spotify {
@@ -20,6 +22,9 @@ public interface Spotify {
 
 @GET("/playlists/me")              // to be changed for every special playlist     ;
 Call<Search>  getPlaylists();
+
+@POST("/users/signup")
+  Call<Users>  createUser(@Body Users users);
 
 
 }

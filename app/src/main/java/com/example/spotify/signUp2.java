@@ -25,6 +25,7 @@ public class signUp2 extends AppCompatActivity {
     String valid_email;
     boolean missing_info ;
     String selected;
+    char convertertoUpper ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +40,8 @@ public class signUp2 extends AppCompatActivity {
 
         List<String> spinnerArray = new ArrayList<String>();
 
-        spinnerArray.add("Female");
-        spinnerArray.add("Male");
+        spinnerArray.add("F");
+        spinnerArray.add("M");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
@@ -50,7 +51,9 @@ public class signUp2 extends AppCompatActivity {
 
         // GET SELECTED
 
-         selected = gender.getSelectedItem().toString();
+
+        // convertertoUpper= selected.charAt(0);
+
 
 
         //check email
@@ -125,7 +128,9 @@ public class signUp2 extends AppCompatActivity {
                         Intent oldIntent  = getIntent();  // getting the object we created in the last activity
                         user= (userInfo)oldIntent.getParcelableExtra("userinfo") ;
                         user.setEmail(valid_email);  // passing the userinfo to another activity
+
                         user.setGender(selected);
+
                         Log.i("done clicked"," " + user.password + " " + user.username + " " + user.email+ " " + user.gender );
                          I.putExtra("userinfo", user);
 
