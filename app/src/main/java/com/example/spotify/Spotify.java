@@ -10,4 +10,7 @@ public interface Spotify {
     @Headers("x-auth: eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s")
     @GET("Search")
     Call<Search> getSearch(@Query("word") String word);
+
+
+
 }

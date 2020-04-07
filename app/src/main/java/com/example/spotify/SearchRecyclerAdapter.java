@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchRecyclerAdapter extends  RecyclerView.Adapter<SearchRecyclerAdapter.ViewHolder> implements Filterable {
@@ -73,7 +72,7 @@ public class SearchRecyclerAdapter extends  RecyclerView.Adapter<SearchRecyclerA
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.imageView);
+            imageView = itemView.findViewById(R.id.homeImageView);
             name = itemView.findViewById(R.id.name);
             details = itemView.findViewById(R.id.details);
 

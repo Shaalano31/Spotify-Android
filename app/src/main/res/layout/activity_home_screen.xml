@@ -9,7 +9,7 @@
     tools:context=".HomeScreen">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/Ver25per"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -17,7 +17,7 @@
         app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/Ver50per"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -25,7 +25,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
+        android:id="@+id/Ver75per"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -33,18 +33,18 @@
         app:layout_constraintGuide_percent="0.75" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/homeImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintBottom_toTopOf="@+id/Hor97per"
+        app:layout_constraintEnd_toStartOf="@+id/Ver25per"
         app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/Hor90per"
         app:srcCompat="@drawable/homewhite" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
+        android:id="@+id/Hor90per"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -52,24 +52,24 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <ImageView
-        android:id="@+id/search"
+        android:id="@+id/searchImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:onClick="goToSearch"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/Hor97per"
+        app:layout_constraintEnd_toStartOf="@+id/Ver50per"
+        app:layout_constraintStart_toStartOf="@+id/Ver25per"
+        app:layout_constraintTop_toTopOf="@+id/Hor90per"
         app:srcCompat="@drawable/searchgrey" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/yourLibraryImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/Hor97per"
+        app:layout_constraintEnd_toStartOf="@+id/Ver75per"
+        app:layout_constraintStart_toStartOf="@+id/Ver50per"
+        app:layout_constraintTop_toTopOf="@+id/Hor90per"
         app:srcCompat="@drawable/librarygrey" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -86,7 +86,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/Ver75per"
         app:layout_constraintTop_toTopOf="@+id/guideline6"
         app:srcCompat="@drawable/settings" />
 
@@ -99,7 +99,7 @@
         app:layout_constraintGuide_percent="0.05" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/yourLibraryTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="@font/lineto"
@@ -107,13 +107,13 @@
         android:textAlignment="center"
         android:textColor="@color/grey"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/Ver75per"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintStart_toStartOf="@+id/Ver50per"
+        app:layout_constraintTop_toTopOf="@+id/Hor97per" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
+        android:id="@+id/Hor97per"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -121,7 +121,7 @@
         app:layout_constraintGuide_percent="0.97"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/homeTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Home"
@@ -129,13 +129,13 @@
         android:textAlignment="center"
         android:fontFamily="@font/lineto"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/Ver25per"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintTop_toTopOf="@+id/Hor97per" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/searchTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Search"
@@ -143,9 +143,9 @@
         android:textAlignment="center"
         android:fontFamily="@font/lineto"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/Ver50per"
         app:layout_constraintHorizontal_bias="0.434"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintStart_toStartOf="@+id/Ver25per"
+        app:layout_constraintTop_toTopOf="@+id/Hor97per" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

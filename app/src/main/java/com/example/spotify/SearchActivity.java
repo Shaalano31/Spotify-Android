@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -29,6 +31,11 @@ public class SearchActivity extends AppCompatActivity {
     List<String> queryResultName;
     List<String> queryResultDetails;
     List<ImageView> queryResultImage;
+
+    //Grid view variables
+    GridView gridView;
+    String []genres =
+            {"Rock", "Hip-Hop", "Pop", "Country", "Arabic", "R&B", "Jazz", "Metal", "Classic", "Latin"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +47,14 @@ public class SearchActivity extends AppCompatActivity {
         queryResultDetails = new ArrayList<>();
         queryResultImage = new ArrayList<>();
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.searchRecyclerView);
         searchRecyclerAdapter = new SearchRecyclerAdapter(queryResultName);
 
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         recyclerView.setAdapter(searchRecyclerAdapter);
-        //recyclerView.setVisibility(View.GONE);
+
+        gridView = findViewById(R.id.searchGridView);
+        SearchGridViewAdapter searchGridViewAdapter = new SearchGridViewAdapter(SearchActivity.this, genres);
+        gridView.setAdapter(searchGridViewAdapter);
 
     }
 
@@ -64,9 +72,31 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                if (newText == "") {
+                    queryResultName.clear();
+                    return false;
+                }
                 queryResultName.clear();
                 searchRequest(newText);
                 return false;
+            }
+        });
+
+        item.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+                @Override //Search button pressed, show recycle view and hide genres
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    gridView.setVisibility(View.GONE);
+                Log.i("INFO", "onMenuItemActionExpand called");
+                return true;
+            }
+
+            @Override // Back button of search is pressed, hide recycle view and show genres
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                recyclerView.setVisibility(View.GONE);
+                gridView.setVisibility(View.VISIBLE);
+                Log.i("INFO", "onMenutItemActionCollapse called");
+                return true;
             }
         });
 
@@ -84,8 +114,6 @@ public class SearchActivity extends AppCompatActivity {
         Log.i("Info", "Back pressed");
         moveTaskToBack(true);
     }
-
-
 
     public void searchRequest(String newText) {
         // requesting search list
@@ -114,6 +142,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 for (int i=0; i<artistsList.size(); i++) {
                     queryResultName.add(artistsList.get(i).getName());
+                    //queryResultDetails.add(artistsList.get(i).getId());
                 }
 
                 for (int i=0; i<albumsList.size(); i++) {
