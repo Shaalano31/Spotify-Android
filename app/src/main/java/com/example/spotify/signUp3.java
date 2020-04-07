@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class signUp3 extends AppCompatActivity {
 
-
+    userInfo user;
     Button done ;
     Button dateofBirth;
     Calendar cal ;
@@ -26,6 +26,7 @@ public class signUp3 extends AppCompatActivity {
     int day ;
     int month ;
     int year;
+    String  valid_date;
     private DatePickerDialog.OnDateSetListener Mydatasetlistener ;
     Calendar dob = Calendar.getInstance();
     Calendar today = Calendar.getInstance();
@@ -67,9 +68,12 @@ public class signUp3 extends AppCompatActivity {
                 day = selectedDay;
 
                 // Show selected date
-                dateofBirth.setText(new StringBuilder().append(month + 1)
+              dateofBirth.setText(new StringBuilder().append(month + 1)
                         .append("-").append(day).append("-").append(year)
                         .append(" "));
+
+                valid_date= Integer.toString(month + 1)+
+                       "-"+ Integer.toString(day) +"-" + Integer.toString(year);
             }
         };
 
@@ -148,12 +152,17 @@ public class signUp3 extends AppCompatActivity {
                    if (age>12) {
 
                        Intent i = new Intent(signUp3.this, HomeScreen.class);   //the home screen shouldbe here
+                       Intent oldIntent  = getIntent();  // getting the object we created in the last activity
+                       user= (userInfo)oldIntent.getParcelableExtra("userinfo") ;
+                       user.setDateOfBirth(valid_date);  // passing the userinfo to another activity
+
+                       i.putExtra("userinfo", user);
                        startActivity(i);
 
                        Log.i("done clicked","age >12 " );
 
 
-                       Log.i("done clicked", " " + new StringBuilder().append(age +" ") );
+                       Log.i("done clicked"," " + user.password + " " + user.username + " " + user.email+ " " + user.gender +  " " +valid_date);
 
 
 

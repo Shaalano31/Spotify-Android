@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class signUp extends AppCompatActivity {
 
-
+    userInfo user;
     EditText username;
     EditText password;
     Button next2;
@@ -148,7 +149,16 @@ public class signUp extends AppCompatActivity {
                 if (missing_info == false && missing_info1 == false && ! username.getText().toString().trim().isEmpty() && ! password.getText().toString().trim().isEmpty() )
                 {
 
+
                     Intent i = new Intent(signUp.this, signUp2.class);
+
+
+                   user = new userInfo();
+                    user.password =valid_Password ;   // passing the userinfo to another activity
+                    user.username =valid_username;
+                    Log.i("done clicked"," " + valid_Password + " " + valid_username  );
+                   i.putExtra("userinfo", user);
+
                     startActivity(i);
 
 
