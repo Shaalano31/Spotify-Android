@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class HomeScreen extends AppCompatActivity {
 
         int i = 0;
 
-       while (i<3)
+       while (i<5)
        {
            initImageBitmaps(i);
            i++;
@@ -55,6 +56,7 @@ public class HomeScreen extends AppCompatActivity {
 
         Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
         startActivity(intent);
+    }
 
     private void initImageBitmaps(int i)
     {
