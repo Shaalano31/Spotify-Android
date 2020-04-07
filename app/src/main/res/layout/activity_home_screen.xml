@@ -180,5 +180,25 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/preiumium_grey" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homeRecyclerViewer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        android:orientation="vertical"
+        app:layout_constraintVertical_bias="0.473" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/theMainRV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="@+id/homeRecyclerViewer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/homeRecyclerViewer" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
