@@ -30,7 +30,7 @@ public class SearchActivity extends AppCompatActivity {
 
     List<String> queryResultName;
     List<String> queryResultDetails;
-    List<ImageView> queryResultImage;
+    List<String> queryResultImage;
 
     //Grid view variables
     GridView gridView;
@@ -51,7 +51,7 @@ public class SearchActivity extends AppCompatActivity {
         queryResultImage = new ArrayList<>();
 
         recyclerView = findViewById(R.id.searchRecyclerView);
-        searchRecyclerAdapter = new SearchRecyclerAdapter(queryResultName);
+        searchRecyclerAdapter = new SearchRecyclerAdapter(queryResultName, queryResultDetails, queryResultImage, this);
 
         recyclerView.setAdapter(searchRecyclerAdapter);
 
@@ -150,23 +150,32 @@ public class SearchActivity extends AppCompatActivity {
 
                 for (int i=0; i<artistsList.size(); i++) {
                     queryResultName.add(artistsList.get(i).getName());
-                    //queryResultDetails.add(artistsList.get(i).getId());
+                    queryResultDetails.add("Artist");
+                    queryResultImage.add("http://52.14.190.202:8000/images/" + artistsList.get(i).getImagePath());
                 }
 
                 for (int i=0; i<albumsList.size(); i++) {
                     queryResultName.add(albumsList.get(i).getAlbumName());
+                    queryResultDetails.add("Album");
+                    queryResultImage.add("http://52.14.190.202:8000/images/" + albumsList.get(i).getImagePath());
                 }
 
                 for (int i=0; i<tracksList.size(); i++) {
                     queryResultName.add(tracksList.get(i).getTrackName());
+                    queryResultDetails.add("Track");
+                    queryResultImage.add("http://52.14.190.202:8000/images/" + tracksList.get(i).getImagePath());
                 }
 
                 for (int i=0; i<playlistsList.size(); i++) {
                     queryResultName.add(playlistsList.get(i).getPlaylistName());
+                    queryResultDetails.add("Playlist");
+                    queryResultImage.add("http://52.14.190.202:8000/images/" + playlistsList.get(i).getImagePath());
                 }
 
                 for (int i=0; i<usersList.size(); i++) {
                     queryResultName.add(usersList.get(i).getUserName());
+                    queryResultDetails.add("User");
+                    queryResultImage.add("http://52.14.190.202:8000/images/" + usersList.get(i).getImagePath());
                 }
 
                 searchRecyclerAdapter.notifyDataSetChanged();
