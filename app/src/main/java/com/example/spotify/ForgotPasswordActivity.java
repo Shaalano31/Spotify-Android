@@ -27,8 +27,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 //To write the code that sends and email and initiates the recovery sequence//
 
                 Toast.makeText(getApplicationContext(), "A recovery link has been sent to your email.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
+                finish();
             }
 
     }
