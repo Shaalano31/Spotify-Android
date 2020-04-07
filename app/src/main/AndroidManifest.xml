@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SearchActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/AppTheme.DarkActionBar"/>
         <activity android:name=".UserProfile" />
         <activity android:name=".EditUser" />
         <activity android:name=".Settings" />
@@ -48,14 +51,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-<activity android:name=".MainActivity"/>
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        -->
         <activity android:name=".signUp3" />
         <activity android:name=".signUp2" />
         <activity android:name=".signUp" />

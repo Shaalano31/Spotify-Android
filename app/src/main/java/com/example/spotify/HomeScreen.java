@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -49,6 +50,11 @@ public class HomeScreen extends AppCompatActivity {
 
         initRecyclerView();
     }
+
+    public void goToSearch (View view) {
+
+        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivity(intent);
 
     private void initImageBitmaps(int i)
     {

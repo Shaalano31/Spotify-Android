@@ -157,7 +157,6 @@ public class signUp3 extends AppCompatActivity {
                        user.setDateOfBirth(valid_date);  // passing the userinfo to another activity
 
                        i.putExtra("userinfo", user);
-
                        startActivity(i);
 
                        Log.i("done clicked","age >12 " );
