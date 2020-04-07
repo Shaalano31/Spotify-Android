@@ -1,5 +1,6 @@
 package com.example.spotify;
 
+
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public interface Spotify {
 
     @Headers("x-auth: eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s")
     @GET("Search")
+
     Call<Playlists> getSearch(@Query("word") String word);
 
     @GET("Artists/{id}")
