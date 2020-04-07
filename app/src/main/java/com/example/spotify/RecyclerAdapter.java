@@ -102,6 +102,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
+
             Log.i("done clicked", "VIEW is clicked ");
         }
 

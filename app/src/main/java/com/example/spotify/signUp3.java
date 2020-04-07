@@ -212,9 +212,14 @@ public class signUp3 extends AppCompatActivity {
 
                     Users use = response.body();
 
+
                     String content ="" ;
 
                     content+= "userName:" + use.getUserName()+ "\n";
+
+                       i.putExtra("userinfo", user);
+                       startActivity(i);
+
 
                     content+= "email:" + use.getEmail()+ "\n";
 

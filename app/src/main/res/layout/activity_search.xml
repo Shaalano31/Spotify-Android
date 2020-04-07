@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".SearchActivity">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Ver25per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25060827" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Ver50per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50364965" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Ver75per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <ImageView
+        android:id="@+id/homeImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="goToHome"
+        app:layout_constraintBottom_toTopOf="@+id/Hor97per"
+        app:layout_constraintEnd_toStartOf="@+id/Ver25per"
+        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Hor90per"
+        app:srcCompat="@drawable/homegrey" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Hor90per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <ImageView
+        android:id="@+id/searchImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/Hor97per"
+        app:layout_constraintEnd_toStartOf="@+id/Ver50per"
+        app:layout_constraintStart_toStartOf="@+id/Ver25per"
+        app:layout_constraintTop_toTopOf="@+id/Hor90per"
+        app:srcCompat="@drawable/searchwhite" />
+
+    <ImageView
+        android:id="@+id/yourLibraryImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="goToLibrary"
+        app:layout_constraintBottom_toTopOf="@+id/Hor97per"
+        app:layout_constraintEnd_toStartOf="@+id/Ver75per"
+        app:layout_constraintStart_toStartOf="@+id/Ver50per"
+        app:layout_constraintTop_toTopOf="@+id/Hor90per"
+        app:srcCompat="@drawable/librarygrey" />
+
+    <TextView
+        android:id="@+id/yourLibraryTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/lineto"
+        android:text="Your Library"
+        android:textAlignment="center"
+        android:textColor="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Ver75per"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Ver50per"
+        app:layout_constraintTop_toTopOf="@+id/Hor97per" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Hor97per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.97" />
+
+    <TextView
+        android:id="@+id/homeTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/lineto"
+        android:text="Home"
+        android:textAlignment="center"
+        android:textColor="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Ver25per"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Hor97per" />
+
+    <TextView
+        android:id="@+id/searchTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/lineto"
+        android:text="Search"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Ver50per"
+        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintStart_toStartOf="@+id/Ver25per"
+        app:layout_constraintTop_toTopOf="@+id/Hor97per" />
+
+    <TextView
+        android:id="@+id/searchText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/lineto"
+        android:text="@android:string/search_go"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/Hor19per"
+        app:layout_constraintEnd_toStartOf="@+id/Ver75per"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Ver25per"
+        app:layout_constraintTop_toTopOf="@+id/Hor10per" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Hor10per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09963548" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Hor19per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18955043" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/Hor90per"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Hor19per" />
+
+    <GridView
+        android:id="@+id/searchGridView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:numColumns="2"
+        app:layout_constraintBottom_toTopOf="@+id/Hor90per"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Hor19per" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

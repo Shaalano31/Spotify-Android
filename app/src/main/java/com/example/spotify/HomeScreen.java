@@ -126,9 +126,14 @@ public class HomeScreen extends AppCompatActivity {
         initRecyclerView();
     }
 
+    public void goToSearch (View view) {
 
+        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivity(intent);
+    }
 
-    /*        private void initImageBitmaps(int i)
+    private void initImageBitmaps(int i)
+
     {
 
        ArrayList<String> tempName = new ArrayList<String>() ;

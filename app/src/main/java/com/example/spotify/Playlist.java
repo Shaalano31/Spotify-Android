@@ -22,6 +22,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class Playlist extends AppCompatActivity {
 
 
@@ -47,7 +53,7 @@ public class Playlist extends AppCompatActivity {
     Button artistButton;
     Button albumButton;
     boolean playlistClicked=true, artistClicked=false, albumClicked=false;      //used to check last button clicked from playlist, artist, albums
-
+    Spotify spotifyApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +104,13 @@ public class Playlist extends AppCompatActivity {
         artistButton = findViewById(R.id.artistButton);
         albumButton = findViewById(R.id.albumButton);
         playlistButton.setTextColor(Color.parseColor("#1DB954"));
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://52.14.190.202:8000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        spotifyApi = retrofit.create(Spotify.class);
+
     }
 
 
@@ -235,4 +248,5 @@ public class Playlist extends AppCompatActivity {
             }
         }
     }
+
 }
