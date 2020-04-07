@@ -1,6 +1,8 @@
 package com.example.spotify;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +59,16 @@ public class SearchGridViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Log.i("info", genreNames[position]);
+                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                alert.setTitle("Notification");
+                alert.setMessage("The screens will be added in the next update");
+                alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alert.create().show();
             }
         });
 

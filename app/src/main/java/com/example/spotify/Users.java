@@ -83,6 +83,8 @@ public class Users {
 
     public String getGender() {
         return gender;
+    }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }

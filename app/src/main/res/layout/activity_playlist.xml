@@ -239,11 +239,7 @@
         android:fontFamily="@font/lineto"
         android:text="Your Library"
         android:textAlignment="center"
-
-        android:textColor="#FFFFFF"
-
         android:textColor="@color/white"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.0"
