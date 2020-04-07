@@ -64,6 +64,7 @@
         android:id="@+id/yourLibraryImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:onClick="goToLibrary"
         app:layout_constraintBottom_toTopOf="@+id/Hor97per"
         app:layout_constraintEnd_toStartOf="@+id/Ver75per"
         app:layout_constraintStart_toStartOf="@+id/Ver50per"
@@ -124,6 +125,7 @@
         android:id="@+id/searchText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/lineto"
         android:text="@android:string/search_go"
         android:textAlignment="center"
@@ -140,16 +142,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.09963548" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/Hor19per"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.19" />
+        app:layout_constraintGuide_percent="0.18955043" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRecyclerView"

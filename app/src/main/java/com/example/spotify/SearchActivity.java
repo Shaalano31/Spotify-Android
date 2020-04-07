@@ -112,6 +112,11 @@ public class SearchActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToLibrary (View view) {
+        Intent intent = new Intent(getApplicationContext(), Playlist.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onBackPressed() {
         Log.i("Info", "Back pressed");
