@@ -8,4 +8,10 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="grey">#a6a6a6</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#FFA500</color>
+    <color name="purple">#9400D3</color>
+    <color name="lime">#00FF00</color>
+    <color name="maroon">#8B0000</color>
+    <color name="turquoise">#40E0D0</color>
 </resources>

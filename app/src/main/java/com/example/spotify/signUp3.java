@@ -1,6 +1,7 @@
 package com.example.spotify;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.util.Calendar;
@@ -146,8 +147,8 @@ public class signUp3 extends AppCompatActivity {
 
                    if (age>12) {
 
-                       //Intent i = new Intent(signUp3.this, homescreen.class);   //the home screen shouldbe here
-                      // startActivity(i);
+                       Intent i = new Intent(signUp3.this, HomeScreen.class);   //the home screen shouldbe here
+                       startActivity(i);
 
                        Log.i("done clicked","age >12 " );
 

@@ -14,10 +14,12 @@ public class SearchGridViewAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
     private String[] genreNames;
+    private int[] colorNames;
 
-    SearchGridViewAdapter(Context c, String[] genreNames) {
+    SearchGridViewAdapter(Context c, String[] genreNames, int[] colorNames) {
         context = c;
         this.genreNames = genreNames;
+        this.colorNames = colorNames;
     }
 
     @Override
@@ -49,6 +51,7 @@ public class SearchGridViewAdapter extends BaseAdapter {
         TextView genreTextView = convertView.findViewById(R.id.genreTextView);
         ImageView genreImageView = convertView.findViewById(R.id.imageView);
         genreTextView.setText(genreNames[position]);
+        genreImageView.setImageResource(colorNames[position]);
 
         genreImageView.setOnClickListener(new View.OnClickListener() {
             @Override

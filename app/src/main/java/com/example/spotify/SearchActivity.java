@@ -36,6 +36,9 @@ public class SearchActivity extends AppCompatActivity {
     GridView gridView;
     String []genres =
             {"Rock", "Hip-Hop", "Pop", "Country", "Arabic", "R&B", "Jazz", "Metal", "Classic", "Latin"};
+    int []colors =
+            {R.color.com_facebook_blue, R.color.colorAccent, R.color.BtnColor,
+            R.color.green, R.color.grey, R.color.red,R.color.orange,R.color.purple, R.color.maroon, R.color.turquoise, R.color.maroon};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +56,7 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.setAdapter(searchRecyclerAdapter);
 
         gridView = findViewById(R.id.searchGridView);
-        SearchGridViewAdapter searchGridViewAdapter = new SearchGridViewAdapter(SearchActivity.this, genres);
+        SearchGridViewAdapter searchGridViewAdapter = new SearchGridViewAdapter(SearchActivity.this, genres, colors);
         gridView.setAdapter(searchGridViewAdapter);
 
     }
