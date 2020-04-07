@@ -45,6 +45,8 @@ public class Users {
     @Expose
     private String text;
 
+    public Users() {
+    }
 
     public Users(String username, String email, String password, boolean b, boolean b1, String day, String month, String year, String gender) {
     }
@@ -113,14 +115,14 @@ public class Users {
 
     public void setYear(String year) {
         this.year = year;
-
-    public void setPassword(String password) {
+    }
+    /*public void setPassword(String password) {
         this.password = password;
     }
     //"_id": "5e8a799494a3760aef918874",
     //            "userName": "Khaled",
     //            "imagePath": "defaultuser.png"
-
+*/
     @SerializedName("_id")
     @Expose
     private String id;
@@ -137,7 +139,7 @@ public class Users {
         this.id = id;
     }
 
-    public String getUserName() {
+/*    public String getUserName() {
         return userName;
     }
 
@@ -156,7 +158,7 @@ public class Users {
     public boolean isActive() {
         return isActive;
     }
-
+*/
     public String getBirthDate() {
         return birthDate;
 
@@ -177,11 +179,11 @@ public class Users {
 
     public void setText(String text) {
         this.text = text;
-
-    public void setUserName(String userName) {
+    }
+    /*public void setUserName(String userName) {
         this.userName = userName;
     }
-
+*/
     public String getImagePath() {
         return imagePath;
     }

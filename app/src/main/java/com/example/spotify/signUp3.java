@@ -217,8 +217,8 @@ public class signUp3 extends AppCompatActivity {
 
                     content+= "userName:" + use.getUserName()+ "\n";
 
-                       i.putExtra("userinfo", user);
-                       startActivity(i);
+                     //  i.putExtra("userinfo", user);
+                      // startActivity(i);
 
 
                     content+= "email:" + use.getEmail()+ "\n";

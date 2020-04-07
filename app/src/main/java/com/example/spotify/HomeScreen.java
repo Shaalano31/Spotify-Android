@@ -163,7 +163,7 @@ public class HomeScreen extends AppCompatActivity {
          names.add(tempName);
 
 
-    }   */
+    }
 
     public  void initRecyclerView()
     {
