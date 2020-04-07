@@ -3,56 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
 
     >
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/myhomerecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/hor60per"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hor20perRe"
-        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor60per"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.6" />
+        app:layout_constraintGuide_percent="0.6019152" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor20perRe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="643dp"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.12668464" />
 
-    <TextView
-        android:id="@+id/titleOfFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/hor17pertext"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hor12per" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor17pertext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.17"
-
+        app:layout_constraintGuide_end="297dp"
+        app:layout_constraintGuide_percent="0.2"
         />
 
     <androidx.constraintlayout.widget.Guideline
@@ -61,16 +38,38 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.11"
+        app:layout_constraintGuide_percent="0.05"
 
         />
 
-    <androidx.viewpager.widget.ViewPager
-        android:layout_width="410dp"
-        android:layout_height="359dp"
-        app:layout_constraintBottom_toBottomOf="@+id/myhomerecyclerView"
+
+
+
+    <TextView
+            android:id="@+id/titleOfFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/lineto"
+            android:text="TextView"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/hor17pertext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/hor12per" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myhomerecyclerView"
+        android:layout_width="315dp"
+        android:layout_height="281dp"
+
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titleOfFragment" />
+        app:layout_constraintTop_toBottomOf="@+id/titleOfFragment"
+        app:layout_constraintVertical_bias="0.384" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

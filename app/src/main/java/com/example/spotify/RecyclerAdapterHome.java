@@ -19,26 +19,29 @@ public class RecyclerAdapterHome extends RecyclerView.Adapter<RecyclerAdapterHom
         private static final String TAG = "RecyclerAdapterrHome";
 
 
-        private ArrayList<fragmentHomeDisplay> fragments;
+        private ArrayList<String> titleHomeArrayList;
+        private ArrayList<ArrayList<String>> namesHomeArrayList;
+        private ArrayList<ArrayList<String>> UrlsHomeArrayList;
         private Context context;
 
-        // data is passed into the constructor
 
-        public RecyclerAdapterHome( ArrayList<fragmentHomeDisplay> fragments, Context context) {
+    // data is passed into the constructor
 
-            this.fragments = fragments;
+        public RecyclerAdapterHome( ArrayList<String> hometitles,ArrayList<ArrayList<String>> names,ArrayList<ArrayList<String>>Urls , Context context) {
+
+            this.titleHomeArrayList = hometitles;
             this.context = context;
+            this.namesHomeArrayList=names;
+            this.UrlsHomeArrayList=Urls;
         }
 
 
 
 
-        // private ItemClickListener mClickListener;
-
         // inflates the row layout from xml when needed
         @NonNull
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
 
 
             LayoutInflater mInflater = LayoutInflater.from(context);
@@ -51,13 +54,43 @@ public class RecyclerAdapterHome extends RecyclerView.Adapter<RecyclerAdapterHom
         @Override
         public void onBindViewHolder(com.example.spotify.RecyclerAdapterHome.ViewHolder holder, int position) {
 
-             //
-
+            holder.playlistTitle.setText(titleHomeArrayList.get(position));
             LinearLayoutManager LayoutManager =new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
-            holder.recycle.setAdapter(this);
             holder.recycle.setLayoutManager(LayoutManager);
+            holder.recycle.setHasFixedSize(true); //  --------------->
 
-            holder.playlistTitle.setText(fragments.get(position).titleOfPlaylist);  // setting the names of the playlist
+
+
+
+            RecyclerAdapter child = new RecyclerAdapter( namesHomeArrayList.get(position), UrlsHomeArrayList.get(position) , (HomeScreen) context);
+            holder.recycle.setAdapter(child);
+
+
+            // HorRecyclerView.setAdapter(recyclerAdapter);
+
+           /* try
+            {
+                LinearLayoutManager LayoutManager =new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false);
+                holder.recycle.setLayoutManager(LayoutManager);
+                RecyclerAdapterHome myadpaterForhomeVer = new RecyclerAdapterHome(fragments,context);
+                holder.recycle.setAdapter(myadpaterForhomeVer);
+                myadpaterForhomeVer.notifyDataSetChanged();
+            }
+
+            catch(NullPointerException e) {
+
+
+                Log.i("adapter home darling  ", "tsaddddd ");
+
+
+            }*/
+
+
+
+
+
+             // setting the names of the playlist
+
 
 
 
@@ -66,7 +99,7 @@ public class RecyclerAdapterHome extends RecyclerView.Adapter<RecyclerAdapterHom
         // total number of rows
         @Override
         public int getItemCount() {
-            return fragments.size();
+            return titleHomeArrayList.size();
         }
 
 
@@ -80,11 +113,12 @@ public class RecyclerAdapterHome extends RecyclerView.Adapter<RecyclerAdapterHom
             ViewHolder(View itemView) {
                 super(itemView);
                 recycle = itemView.findViewById(R.id.myhomerecyclerView);
-                playlistTitle = itemView.findViewById(R.id.playlistName);
+                playlistTitle = itemView.findViewById(R.id.titleOfFragment);
+
                 itemView.setOnClickListener(this);
             }
 
-            @Override
+            @Override   // neww to go to the playlist page
             public void onClick(View v) {
                 Log.i("done clicked", "VIEW is clicked ");
             }

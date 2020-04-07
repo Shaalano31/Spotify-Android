@@ -1,6 +1,7 @@
 package com.example.spotify;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class fragmentHomeDisplay  extends Fragment {
+    private static final String TAG = "fragmentHomeDisplay";
 
     //////////////////variables  fragement filling up its variables needs
 
@@ -18,9 +20,13 @@ public class fragmentHomeDisplay  extends Fragment {
 
     RecyclerView    recyclerView;
     RecyclerAdapter recyclerAdapter;
+    private fragmentHomeDisplay listener;
 
     String titleOfPlaylist ;
 
+    public interface FragmentHomeDisplayListener {     // for aqny futre interactionnn
+        void onInputASent(CharSequence input);
+    }
 
     // constructor for the fragment
 
@@ -42,13 +48,22 @@ public class fragmentHomeDisplay  extends Fragment {
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState)
 
         {
-            View view  = inflater.inflate(R.layout.home_playlists_display, container, false);
 
-            LinearLayoutManager LayoutManager =new LinearLayoutManager(getActivity());
-            recyclerView.setAdapter(recyclerAdapter);
-            recyclerView.setLayoutManager(LayoutManager);
 
-            return view;
+            try {
+
+                View view  = inflater.inflate(R.layout.home_playlists_display, container, false);
+
+                LinearLayoutManager LayoutManager =new LinearLayoutManager(getActivity());
+                recyclerView.setAdapter(recyclerAdapter);
+                recyclerView.setLayoutManager(LayoutManager);
+
+                return view;
+
+            } catch (Exception e) {
+                Log.e(TAG, "onCreateView", e);
+                throw e;
+            }
 
             }
     @Override
