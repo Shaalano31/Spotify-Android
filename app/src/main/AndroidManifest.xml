@@ -15,7 +15,11 @@
         <activity android:name=".UserProfile" />
         <activity android:name=".EditUser" />
         <activity android:name=".Settings" />
+
+        <activity android:name=".SongsList"></activity>
         <activity android:name=".HomeScreen" />
+        <activity android:name=".Playlist" />
+        <activity android:name=".CreatePlaylist" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

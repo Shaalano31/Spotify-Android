@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/createPlaylistLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1A1A">
+
+    <TextView
+        android:id="@+id/titleTextViewCP"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:fontFamily="@font/lineto"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="Name Your Playlist"
+        android:textColor="#F0ECEC"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toTopOf="@+id/topTitleGL"
+        app:layout_constraintEnd_toStartOf="@+id/rightTitleGL"
+        app:layout_constraintStart_toStartOf="@+id/leftTitleGL"
+        app:layout_constraintTop_toTopOf="@+id/bottomTitleGL" />
+
+    <EditText
+        android:id="@+id/playlistNameEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:textColor="#F0ECEC"
+        android:textColorHighlight="#4CAF50"
+        android:textColorHint="#4CAF50"
+        android:textColorLink="#4CAF50"
+        android:textSize="29sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNameGL"
+        app:layout_constraintEnd_toStartOf="@+id/rightTitleGL"
+        app:layout_constraintStart_toStartOf="@+id/leftTitleGL"
+        app:layout_constraintTop_toTopOf="@+id/topTitleGL" />
+
+    <TextView
+        android:id="@+id/setButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:onClick="onClick"
+        android:tag="set"
+        android:text="Set"
+        android:textColor="#1DB954"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/GL14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/GL15"
+        app:layout_constraintTop_toTopOf="@+id/GL13" />
+
+    <TextView
+        android:id="@+id/cancelButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:onClick="onClick"
+        android:tag="cancel"
+        android:text="Cancel"
+        android:textColor="#1DB954"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/GL14"
+        app:layout_constraintEnd_toStartOf="@+id/GL15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/GL13" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightTitleGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftTitleGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/GL15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomTitleGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.10123119" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topTitleGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomNameGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/GL13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/GL14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.56" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

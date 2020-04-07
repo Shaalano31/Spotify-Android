@@ -10,8 +10,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 public class HomeScreen extends AppCompatActivity {
-
-
+  
     RecyclerView  recyclerView;
     RecyclerAdapterHome homeAdapter;
 
@@ -19,6 +18,13 @@ public class HomeScreen extends AppCompatActivity {
     private ArrayList<ArrayList<String>> picUrls= new ArrayList<ArrayList<String>>() ;
     private ArrayList<String> Titles = new ArrayList<String>() ;
 
+    ImageView settings ;
+    userInfo user;
+
+    public void libraryClick(View view){
+        Intent intent = new Intent(getApplicationContext(), Playlist.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
