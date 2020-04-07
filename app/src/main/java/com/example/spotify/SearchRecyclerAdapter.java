@@ -8,7 +8,6 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,15 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerAdapter  extends  RecyclerView.Adapter<RecyclerAdapter.ViewHolder> implements Filterable {
+public class SearchRecyclerAdapter extends  RecyclerView.Adapter<SearchRecyclerAdapter.ViewHolder> implements Filterable {
 
 
     List<String> queryResultName;
-    List<String> queryResultNameFull;
 
-    public RecyclerAdapter(List<String> queryResultName) {
+    public SearchRecyclerAdapter(List<String> queryResultName) {
         this.queryResultName = queryResultName;
-        this.queryResultNameFull = new ArrayList<>(queryResultName);
     }
 
     @NonNull
@@ -40,17 +37,20 @@ public class RecyclerAdapter  extends  RecyclerView.Adapter<RecyclerAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        Log.i("Info", "PRINTING");
         holder.name.setText(queryResultName.get(position));
         holder.details.setText(String.valueOf(position));
     }
 
     @Override
     public int getItemCount() {
+
         return queryResultName.size();
     }
 
     @Override
     public Filter getFilter() {
+
         return filter;
     }
 
