@@ -9,9 +9,14 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class HomeScreen extends AppCompatActivity {
-
     ImageView settings ;
     userInfo user;
+
+    public void libraryClick(View view){
+        Intent intent = new Intent(getApplicationContext(), Playlist.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

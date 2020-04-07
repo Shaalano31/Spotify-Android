@@ -29,72 +29,7 @@ import java.util.ArrayList;
 
 public class LogInActivity extends AppCompatActivity implements View.OnKeyListener, View.OnClickListener {
 
-    public class DownloadTask extends AsyncTask<String, Void, String> {
 
-        @Override
-        protected String doInBackground(String... urls) {
-
-            String result = "";
-            URL url;
-            HttpURLConnection urlConnection = null;
-
-            try {
-                url = new URL(urls[0]);
-
-                urlConnection = (HttpURLConnection) url.openConnection();
-
-                InputStream in = urlConnection.getInputStream();
-
-                InputStreamReader reader = new InputStreamReader(in);
-
-                int data = reader.read();
-
-                while (data != -1) {
-
-                    char current = (char) data;
-
-                    result += current;
-
-                    data = reader.read();
-
-                }
-
-                return result;
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            try {
-
-                JSONObject jsonObject = new JSONObject(result);
-
-                String accounts = jsonObject.getString("accounts");
-
-
-                JSONArray arr = new JSONArray(accounts);
-
-                for (int i = 0; i < arr.length(); i++) {
-
-                    listdata.add(arr.getString(i));
-
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
     ArrayList<String> listdata = new ArrayList<String>();
     EditText usernameEditText;  //the username entered by user
     EditText passwordEditText;  //the password entered by user
@@ -106,9 +41,10 @@ public class LogInActivity extends AppCompatActivity implements View.OnKeyListen
         String userName = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         //if pressed on the background or the logo and the keyboard is up, hide it
-        if (view.getId() == R.id.spotifyImageView || view.getId() == R.id.spotifyLogo || view.getId() == R.id.backgroundLayout) {
-
-            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        if (view.getId() == R.id.spotifyImageView || view.getId() == R.id.backgroundLayout) {
+            if(inputMethodManager.isAcceptingText()) {
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
         } else if (view.getId() == R.id.forgotPasswordLoginPage) {
             Intent intent = new Intent(getApplicationContext(), ForgotPasswordActivity.class);
             startActivity(intent);
@@ -126,10 +62,11 @@ public class LogInActivity extends AppCompatActivity implements View.OnKeyListen
                 if (listdata.contains(requestDetails)) {
                         //to type the code that directs to the homepage
                         Toast.makeText(getApplicationContext(), "YAY", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+                    startActivity(intent);
 
                 } else {
 
-                    Log.i(requestDetails, listdata.get(1));
                     Toast.makeText(getApplicationContext(), "Wrong username or password.", Toast.LENGTH_SHORT).show();
 
                 }
@@ -143,7 +80,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnKeyListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        DownloadTask task = new DownloadTask();
+        DownloadTask task = new DownloadTask(listdata);
         task.execute("https://b9bf2891-740a-4087-b3eb-24551a0a4ae2.mock.pstmn.io/login/");
 
         usernameEditText = findViewById(R.id.usernameLoginEdittext);
@@ -151,11 +88,9 @@ public class LogInActivity extends AppCompatActivity implements View.OnKeyListen
         forgotPasswordTextView=findViewById(R.id.forgotPasswordLoginPage);
 
         ImageView spotifyImageView = findViewById(R.id.spotifyImageView);
-        TextView spotifyLogo = findViewById(R.id.spotifyLogo);
         ConstraintLayout constraintLayout = findViewById(R.id.backgroundLayout);
         constraintLayout.setOnClickListener(this);
         spotifyImageView.setOnClickListener(this);
-        spotifyLogo.setOnClickListener(this);
         //To recognize pressed keys and retrieve and handle them
         passwordEditText.setOnKeyListener(this);
 
