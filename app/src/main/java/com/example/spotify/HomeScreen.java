@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -58,31 +59,56 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToSettings (View view) {
+        Intent intent = new Intent(getApplicationContext(), Settings.class);
+
+///////////////////////////////to be passed to settings
+        userInfo   user;
+
+        Intent oldIntent  = getIntent();  // getting the object we created in the last activity
+
+
+        user= (userInfo)oldIntent.getParcelableExtra("userinfo") ;
+
+       // Log.i("done clicked"," " + user.password + " " + user.username + " " + user.email+ " " + user.gender +  " " +user.dateOfBirth);  //// samah added
+
+        intent.putExtra("userinfo", user);
+
+
+
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.i("Info", "Back pressed");
+        moveTaskToBack(true);
+    }
+
     private void initImageBitmaps(int i)
     {
 
        ArrayList<String> tempName = new ArrayList<String>() ;
         ArrayList<String> tempUrl = new ArrayList<String>() ;
 
-        tempUrl.add("https://i.redd.it/j6myfqglup501.jpg");
-        tempName.add("Rocky Mountain National Park");
 
+        tempUrl.add("https://static.billboard.com/files/media/Solastalgia-missy-higgins-album-art-2018-billboard-1240-1024x1024.jpg");
+        tempName.add(" Amazing Pop");
 
-        tempUrl.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-        tempName.add("Mahahual");
+        tempUrl.add("https://static.billboard.com/files/media/ariana-grande-sweetner-album-art-2018-billboard-1240-1024x1024.jpg");
+        tempName.add("chill");
 
-        tempUrl.add("https://i.redd.it/k98uzl68eh501.jpg");
-        tempName.add("Frozen Lake");
+        tempUrl.add("https://static.billboard.com/files/media/kacey-musgraves-golden-hour-album-2018-billboard-embed-1024x1024.jpg");
+        tempName.add("Have fun ");
 
+        tempUrl.add("https://static.billboard.com/files/media/janelle-monae-dirty-computer-album-2018-billboard-embed-1024x1024.jpg");
+        tempName.add("Our best selection");
 
-        tempUrl.add("https://i.redd.it/glin0nwndo501.jpg");
-        tempName.add("White Sands Desert");
+        tempUrl.add("https://static.billboard.com/files/media/Bad-Religion-Age-of-Unreason-album-art-2019-billboard-1240-1024x1024.jpg");
+        tempName.add("Swag mood");
 
-        tempUrl.add("https://i.redd.it/obx4zydshg601.jpg");
-        tempName.add("Austrailia");
-
-        tempUrl.add("https://i.imgur.com/ZcLLrkY.jpg");
-        tempName.add("Washington");
+        tempUrl.add("https://static.billboard.com/files/media/Taylor-Swift-Lover-album-art-2019-billboard-1240-1024x1024.jpg");
+        tempName.add("Fav pop");
 
         picUrls.add(tempUrl);
          names.add(tempName);

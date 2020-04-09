@@ -19,9 +19,26 @@ public class Users {
     @SerializedName("isActive")
     @Expose
     private boolean isActive;
-    @SerializedName("birthDate")
+
+
+    @SerializedName("day")
     @Expose
-    private String birthDate;
+    private String day;
+
+    @SerializedName("month")
+    @Expose
+    private String month;
+
+    @SerializedName("year")
+    @Expose
+    private String year;
+
+    /*@SerializedName("birthDate")
+    @Expose
+    private String birthDate;*/
+
+
+
     @SerializedName("gender")
     @Expose
     private String gender;
@@ -48,6 +65,12 @@ public class Users {
     @SerializedName("imagePath")
     @Expose
     private String imagePath;
+
+
+    public Users(String username, String email, String password, boolean b, boolean b1, String day, String month, String year, String gender) {
+    }
+    public Users() {
+    }
 
     public String getId() {
         return id;
@@ -77,9 +100,9 @@ public class Users {
         return isActive;
     }
 
-    public String getBirthDate() {
+    /*public String getBirthDate() {
         return birthDate;
-    }
+    }*/
 
     public String getGender() {
         return gender;
@@ -95,5 +118,29 @@ public class Users {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }

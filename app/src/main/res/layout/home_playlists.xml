@@ -27,17 +27,19 @@
 
     <TextView
         android:id="@+id/playlistName"
-        android:layout_width="278dp"
-        android:layout_height="31dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fontFamily="@font/lineto"
-        android:text="ihwdwwkdkwdkwdn"
+        android:text="efwfeee"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="23sp"
         app:layout_constraintBottom_toTopOf="@+id/hor42per"
         app:layout_constraintEnd_toStartOf="@+id/ver50per"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="@+id/ver5per"
-        app:layout_constraintTop_toTopOf="@+id/hor35per" />
+        app:layout_constraintTop_toTopOf="@+id/hor35per"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor35per"
@@ -52,8 +54,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_begin="223dp"
+        app:layout_constraintGuide_percent="0.999999" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver5per"
@@ -61,7 +63,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.01" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver50per"
@@ -69,18 +71,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="67dp"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.9999999" />
 
 
     <ImageView
         android:id="@+id/playlisPic"
-        android:layout_width="311dp"
-        android:layout_height="193dp"
-        app:layout_constraintBottom_toTopOf="@+id/hor30per"
-        app:layout_constraintEnd_toStartOf="@+id/ver50per"
+        android:layout_width="314dp"
+        android:layout_height="167dp"
+        app:layout_constraintBottom_toTopOf="@+id/hor35per"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ver5per"
-        app:layout_constraintTop_toTopOf="@+id/hor5per"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 

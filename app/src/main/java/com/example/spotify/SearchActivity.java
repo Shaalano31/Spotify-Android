@@ -117,11 +117,11 @@ public class SearchActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         Log.i("Info", "Back pressed");
         moveTaskToBack(true);
-    }
+    }*/
 
     public void searchRequest(String newText) {
         // requesting search list

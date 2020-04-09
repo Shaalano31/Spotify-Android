@@ -174,4 +174,11 @@ public class MainActivity extends AppCompatActivity {
         Log.i("Details", "BYEBYE2");
         Log.i("ACCESS", accessTokenTracker.toString());
     }
+
+    @Override
+    public void onBackPressed() {
+        Log.i("Info", "Back pressed");
+        moveTaskToBack(true);
+    }
+
 }

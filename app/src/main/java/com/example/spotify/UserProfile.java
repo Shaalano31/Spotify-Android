@@ -34,9 +34,24 @@ public class UserProfile extends AppCompatActivity {
                 Intent i = new Intent(UserProfile.this, EditUser.class);
 
                 i.putExtra("userinfo", user);
-                Log.i("done clicked"," " + user.password + " " + user.username + " " + user.email+ " " + user.gender +  " " +user.dateOfBirth);
+              Log.i("done clicked"," " + user.password + " " + user.username + " " + user.email+ " " + user.gender +  " " +user.dateOfBirth);
                 startActivity(i);
             }
         });
+    }
+
+    public void goToHome (View view) {
+        Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+        startActivity(intent);
+    }
+
+    public void goToSearch (View view) {
+        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToPlaylists (View view) {
+        Intent intent = new Intent(getApplicationContext(), Playlist.class);
+        startActivity(intent);
     }
 }

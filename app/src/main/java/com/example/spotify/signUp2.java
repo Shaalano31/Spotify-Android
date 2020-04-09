@@ -39,8 +39,8 @@ public class signUp2 extends AppCompatActivity {
 
         List<String> spinnerArray = new ArrayList<String>();
 
-        spinnerArray.add("Female");
-        spinnerArray.add("Male");
+        spinnerArray.add("F");
+        spinnerArray.add("M");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);

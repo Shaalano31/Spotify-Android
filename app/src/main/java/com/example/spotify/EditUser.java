@@ -97,7 +97,7 @@ public class EditUser extends AppCompatActivity {
         user = (userInfo) oldIntent.getParcelableExtra("userinfo");
 
 
-   username.setText(user.username);
+        username.setText(user.username);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -108,8 +108,8 @@ public class EditUser extends AppCompatActivity {
                    user.username= username.getText().toString();
 
 
-                   Intent i = new Intent( EditUser.this, UserProfile.class);
-                    i.putExtra("userinfo", user);
+                   Intent i = new Intent( EditUser.this, HomeScreen.class);
+                   i.putExtra("userinfo", user);
                    Log.i("done clicked"," " + user.password + " " + user.username + " " + user.email+ " " + user.gender +  " " +user.dateOfBirth);
                    startActivity(i);
                }
@@ -124,6 +124,21 @@ public class EditUser extends AppCompatActivity {
 
 
 
+    }
+
+    public void goToHome (View view) {
+        Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+        startActivity(intent);
+    }
+
+    public void goToSearch (View view) {
+        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToPlaylists (View view) {
+        Intent intent = new Intent(getApplicationContext(), Playlist.class);
+        startActivity(intent);
     }
 
 }
