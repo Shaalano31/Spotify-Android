@@ -31,3 +31,12 @@ Run->run 'app'
 app (from the left bar) -> com.example.spotify (androidTest) -> right click the class name and choose Run
 
 
+# Generate Doc 
+
+1.Open menu option Tools --> Javadoc.
+2.Select Custom scope.
+3.Click the ... icon to open the Scopes dialog.
+4. Add a new custom scope with the green + icon.
+5. In Production Classes navigate to the module(s) you wish to generate Javadoc for but manually exclude R.java and BuildConfig.java. When you're done, Click OK to exit the Scopes dialog.
+6. In the Specify Generate JavaDoc scope dialog, if your new scope is not selected in the Custom scope dropdown menu, select it now, as well as any other additional options including output directory.
+7. Finally, click OK to generate your Javadoc.
