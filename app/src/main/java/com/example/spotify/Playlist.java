@@ -114,6 +114,21 @@ public class Playlist extends AppCompatActivity {
     }
 
 
+    public void goToSettings (View view) {
+        //Intent intent = new Intent(getApplicationContext(), Settings.class);
+        //startActivity(intent);
+    }
+
+    public void goToSearch (View view) {
+        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToHome (View view) {
+        Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+        startActivity(intent);
+    }
+
     public void createPlaylistButtonClick(View v){
         Intent intent = new Intent(this, CreatePlaylist.class);
         this.startActivityForResult(intent,1);

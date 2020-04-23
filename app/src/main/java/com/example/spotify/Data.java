@@ -1,3 +1,4 @@
+/*
 package com.example.spotify;
 
 import com.google.gson.annotations.Expose;
@@ -39,3 +40,4 @@ public class Data {
                 '}';
     }
 }
+*/

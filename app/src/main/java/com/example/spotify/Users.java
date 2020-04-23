@@ -32,6 +32,9 @@ public class Users {
     @Expose
     private String year;
 
+    /*@SerializedName("birthDate")
+    @Expose
+    private String birthDate;*/
 
 
     @SerializedName("birthDate")
@@ -129,6 +132,12 @@ public class Users {
     @Expose
     private String imagePath;
 
+
+    public Users(String username, String email, String password, boolean b, boolean b1, String day, String month, String year, String gender) {
+    }
+    public Users() {
+    }
+
     public String getId() {
         return id;
     }
@@ -155,11 +164,6 @@ public class Users {
 
     public boolean isActive() {
         return isActive;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-
     }
 
     public String getGender() {
@@ -189,5 +193,29 @@ public class Users {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
 
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }

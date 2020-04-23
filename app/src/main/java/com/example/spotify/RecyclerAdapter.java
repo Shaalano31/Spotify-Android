@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView ;
+
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -53,17 +56,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         holder. playlistTitle.setText(names.get(position));  // setting the names of the playlist
-        ImageDownloader imageDownloader = new ImageDownloader();
-        Bitmap playListImg = null;
-        try {
-            playListImg= imageDownloader.execute(picUrls.get(position)).get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-        holder.playlistPhoto.setImageBitmap(playListImg);
+        Glide.with(context)
+                .asBitmap()
+                .load(picUrls.get(position))
+                .into(holder.playlistPhoto);
 
         holder.playlistPhoto.setOnClickListener(new View.OnClickListener() {
             @Override

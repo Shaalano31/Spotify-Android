@@ -16,6 +16,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -52,6 +54,12 @@ public class SearchRecyclerAdapter extends  RecyclerView.Adapter<SearchRecyclerA
         holder.details.setText(queryResultDetails.get(position));
 
 
+        Glide.with(context)
+                .asBitmap()
+                .load(queryResultImage.get(position))
+                .into(holder.imageView);
+/*
+
         ImageDownloader imageDownloader = new ImageDownloader();
         Bitmap playListImg = null;
         try {
@@ -63,7 +71,7 @@ public class SearchRecyclerAdapter extends  RecyclerView.Adapter<SearchRecyclerA
         }
 
 
-        holder.imageView.setImageBitmap(playListImg); //imageview
+        holder.imageView.setImageBitmap(playListImg); //imageview*/
     }
 
     @Override

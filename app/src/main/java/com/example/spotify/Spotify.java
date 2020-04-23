@@ -50,6 +50,9 @@ Call<Search>  getPlaylists();
     @POST("users/login")
     Call<Void> userLogIn(@Body Users user);
 
+    @POST("/users/signup")
+    Call<Users>  createUser(@Body Users users);
+
     @POST("playlists")
     Call<Playlists> createPlaylist(@Header ("x-auth") String txt,
                                    @Body Playlists playlist);
