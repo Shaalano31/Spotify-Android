@@ -25,19 +25,22 @@ public class CreatePlaylist extends AppCompatActivity {
     TextView set;
     TextView cancel;
     Intent resultIntent;
-    SQLiteDatabase userInfoDatabase;
-    String userToken;
+    SQLiteDatabase userInfoDatabase;//////////////////////////////////////////////////
+    String userToken; /////////////////////////////////////////////////////////////
     boolean done=false;
     Spotify spotifyApi;
+    ////////////////////////////////////////////////////declarations
+
+
     public void onClick(View view){
 
         if(view.getTag().toString().equals("set")){
-            createPlaylistApi();
+            createPlaylistApi();  ////////////////////call api
             if(done) {
                 String playlistNameStr = playlistName.getText().toString();
                 resultIntent.putExtra("playlist name", playlistNameStr);
                 setResult(RESULT_OK, resultIntent);
-                finish();
+                finish(); /////////////////// call finish creating the list
             }else{
                 Toast.makeText(getApplicationContext(),"Error, Try again later.", Toast.LENGTH_SHORT).show();
 
@@ -48,6 +51,8 @@ public class CreatePlaylist extends AppCompatActivity {
             finish();
         }
     }
+
+    ////////////////////////////////////////////////////func
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +67,7 @@ public class CreatePlaylist extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         spotifyApi = retrofit.create(Spotify.class);
-
+   ///////////////////////////////getting usertoken from database
         try {
             userInfoDatabase = this.openOrCreateDatabase("User", MODE_PRIVATE, null);
             Cursor c = userInfoDatabase.rawQuery("Select * FROM UserTokens WHERE token='UserToken'",null);
@@ -73,7 +78,7 @@ public class CreatePlaylist extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+/////////////////////////////////////////////////////////////////////////////////////////
     }
 
     private void createPlaylistApi(){

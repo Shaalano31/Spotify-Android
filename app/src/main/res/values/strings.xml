@@ -15,6 +15,7 @@
     <string name="click_to_enter_your_date_of_brith">click to enter your date of brith</string>
     <string name="click_to_enter_the_date_of_birth">click to enter the date of birth</string>
     <string name="log_in">Log in</string>
-   <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="BaseUrl"> https://825c1451-4886-40aa-be4b-358a1bb44bbb.mock.pstmn.io</string>
 
 </resources>
