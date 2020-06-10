@@ -5,8 +5,6 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-
 import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,13 +12,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -215,11 +210,10 @@ public class HomeScreen extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Playlist.class);
         startActivity(intent);
     }
-//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public  void NotificationUserActionApi(View view)
     {
         String usertoken="HZAHLHAHY_USERTOKEN_GBSUGSUG";
-
         final String[] Result = new String[1];
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -260,6 +254,50 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
     }
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public  void NotificationShareApi(View view)
+    {
+        String usertoken="HZAHLHAHY_USERTOKEN_GBSUGSUG";
+
+        final String[] Result = new String[1];
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl( "https://825c1451-4886-40aa-be4b-358a1bb44bbb.mock.pstmn.io/ShareSong/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Spotify spotify = retrofit.create(Spotify.class);
+        Call<Tracks> call= spotify.getSongLink(usertoken);
+        call.enqueue(new Callback<Tracks>() {
+            @Override
+            public void onResponse(Call<Tracks> call, Response<Tracks> response) {
+                if (!response.isSuccessful())
+
+                {
+                    Result[0] = String.valueOf(response.code());
+                    Toast.makeText(getApplicationContext(),"Failed,Notification:"+ response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+               Tracks song ;
+               song = response.body();
+
+                String song_link = song.getSongLink();
+                String song_Name=song.getTrackName();
+                String artist_name = song.getArtistName();
+                Log.d("recieved ", song.getSongLink()+"+"+song.getTrackName()+"+"+song.getArtistName());
+                share(song_link);
+                ////////////////////////////////
+
+
+            }
+            @Override
+            public void onFailure(Call<Tracks> call, Throwable t) {
+                String errorMessage =t.getMessage();
+            }
+        });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////on click functions
 
 
@@ -291,6 +329,16 @@ public class HomeScreen extends AppCompatActivity {
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .build();
         notificationManager.notify(2, notification);
+    }
+/////////////////////////////////////////////////////////////////////
+    public void share(String link) {
+        Intent i = new Intent();
+        i.setAction(Intent.ACTION_SEND);
+       // String link = "https://www.youtube.com/watch?v=YQHsXMglC9A";
+        i.putExtra(Intent.EXTRA_TEXT,link);
+        i.setType("text/plain");
+        i=Intent.createChooser(i,"Share by");
+        startActivity(i);
     }
 
 //////////////////////////////////////////////////////////////////////////3  making the notification when entering a certain activity from mock server
@@ -338,9 +386,6 @@ void NotificationWelcomeApi()
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////4
-
-
-
 
 }
 

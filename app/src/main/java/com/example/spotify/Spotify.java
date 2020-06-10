@@ -84,6 +84,8 @@ public interface Spotify {
   @GET("/PushNot2")
   Call<Notifications>  getPushnotification2(@Header("x-auth") String txt);
 
+  @GET("/ShareSong")
+  Call<Tracks>  getSongLink(@Header("x-auth") String txt);
 
 
 

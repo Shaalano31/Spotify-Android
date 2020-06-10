@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Tracks {
 
-    @SerializedName("_id")
+    @SerializedName("id")
     @Expose
     private String id;
 
@@ -23,7 +23,17 @@ public class Tracks {
 
     @SerializedName("artistId")
     @Expose
-    private String artistID;
+    private String artistId;
+    @SerializedName("songLink")
+    @Expose
+    private String songLink;
+
+    public String getSongLink() {
+        return songLink;
+    }
+
+
+
 
     public String getId() {
         return id;
@@ -58,10 +68,10 @@ public class Tracks {
     }
 
     public String getArtistID() {
-        return artistID;
+        return artistId;
     }
 
     public void setArtistID(String artistID) {
-        this.artistID = artistID;
+        this.artistId = artistID;
     }
 }
