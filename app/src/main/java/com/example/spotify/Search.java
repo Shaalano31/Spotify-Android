@@ -1,5 +1,7 @@
 package com.example.spotify;
 
+import android.provider.MediaStore;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

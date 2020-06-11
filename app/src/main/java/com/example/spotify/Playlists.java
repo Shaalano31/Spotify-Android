@@ -3,6 +3,7 @@ package com.example.spotify;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 public class Playlists {
 
     @SerializedName("_id")
@@ -33,7 +34,7 @@ public class Playlists {
         this.id = id;
     }
 
-    public String getPlaylistName() {
+    public String  getPlaylistName() {
         return playlistName;
     }
 

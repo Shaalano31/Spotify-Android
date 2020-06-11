@@ -21,32 +21,44 @@ import static android.content.Context.MODE_PRIVATE;
 
 public interface Spotify {
 
-    @Headers("x-auth: eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s")
-    @GET("Search")
-    Call<Search> getSearch(@Query("word") String word);
+  @Headers("x-auth: eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s")
+  @GET("Search")
+  Call<Search> getSearch(@Query("word") String word);
 
 
-    @GET("/ShareSong")
-    Call<Tracks>  getSongLink(@Header("x-auth") String txt);
+  @GET("/EnterHomescreen")
+  Call<Notifications>  getPushnotification1(@Header("x-auth") String txt);
+
+  @GET("/FollowArtist")
+  Call<Notifications>  getPushnotification2(@Header("x-auth") String txt);
+
+  @GET("/LikeAPlaylist")
+  Call<Notifications>  getPushnotification3(@Header("x-auth") String txt);
+
+  @GET("/AddAsong")
+  Call<Notifications>  getPushnotification4(@Header("x-auth") String txt);
 
 
-    @GET("Artists/{id}")
-    Call<Artists> getArtist(@Path("id") String id );
 
 
-    @Headers("x-auth: eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s")
-    @POST("users/login")
-    Call<Void> userLogIn(@Body Users user);
+  @GET("/ShareSong")
+  Call<Tracks>  getSongLink(@Header("x-auth") String txt);
 
-    @POST("playlists")
-    Call<Playlists> createPlaylist(@Header ("x-auth") String txt,
-                                   @Body Playlists playlist);
 
-    @GET("artists")
-    Call<List<Artists>> getSeveralArtists(@Header("x-auth") String txt);
+  @GET("Artists/{id}")
+  Call<Artists> getArtist(@Path("id") String id );
+
+
+  @Headers("x-auth: eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s")
+  @POST("users/login")
+  Call<Void> userLogIn(@Body Users user);
+
+  @POST("playlists")
+  Call<Playlists> createPlaylist(@Header ("x-auth") String txt,
+                                 @Body Playlists playlist);
+
+  @GET("artists")
+  Call<List<Artists>> getSeveralArtists(@Header("x-auth") String txt);
 
 
 }
-
-
-

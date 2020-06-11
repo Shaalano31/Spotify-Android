@@ -192,8 +192,8 @@ public class Playlist extends AppCompatActivity {
     }
 
     public void goToSearch (View view) {
-        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
-        startActivity(intent);
+      //  Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        //startActivity(intent);
     }
 
     public void goToHome (View view) {
