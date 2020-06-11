@@ -36,6 +36,7 @@
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:onClick="NotificationAddSongApi"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintHorizontal_bias="0.564"
@@ -56,6 +57,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clickable="true"
+        android:onClick="NotificationFollowArtistApi"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -66,7 +68,7 @@
         android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:onClick="libraryClick"
+        android:onClick="NotificationLikeAPlaylistApi"
 
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -87,11 +89,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clickable="true"
+        android:onClick="NotificationLogClick"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline6"
 
+        app:layout_constraintTop_toTopOf="@+id/guideline6"
         app:srcCompat="@drawable/settings" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -173,6 +176,7 @@
         android:layout_width="95dp"
         android:layout_height="41dp"
         android:clickable="true"
+        android:onClick="NotificationShareApi"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
