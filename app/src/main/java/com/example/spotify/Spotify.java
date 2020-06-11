@@ -21,9 +21,11 @@ import static android.content.Context.MODE_PRIVATE;
 
 public interface Spotify {
 
-    @SerializedName("songLink")
-    @Expose
-    private String songLink;
+    @Headers("x-auth: eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s")
+    @GET("Search")
+    Call<Search> getSearch(@Query("word") String word);
+
+
     @GET("/EnterHomescreen")
     Call<Notifications>  getPushnotification1(@Header("x-auth") String txt);
 
@@ -57,3 +59,5 @@ public interface Spotify {
 
 
 }
+
+

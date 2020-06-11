@@ -14,24 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MusicPlayerScreen"></activity>
-
-        <service
-            android:name=".PlayerService"
-            android:enabled="true"
-            android:exported="true" />
-
-        <activity
-            android:name=".SearchActivity"
-            android:theme="@style/AppTheme.DarkActionBar"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".UserProfile" />
-        <activity android:name=".EditUser" />
-        <activity android:name=".Settings" />
+        <activity android:name=".NotificationListener"></activity>
         <activity android:name=".SongsList" />
         <activity android:name=".HomeScreen" />
         <activity android:name=".Playlist" />
         <activity android:name=".CreatePlaylist" />
+        <activity android:name=".MusicPlayerScreen"></activity>
+        <activity android:name=".UserProfile" />
+        <activity android:name=".EditUser" />
+        <activity android:name=".Settings" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -60,11 +51,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signUp3" />
         <activity android:name=".signUp2" />
         <activity android:name=".signUp" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".ForgotPasswordActivity" />
+
+
+        <service
+            android:name=".PlayerService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".SearchActivity"
+            android:theme="@style/AppTheme.DarkActionBar"
+            android:windowSoftInputMode="adjustPan" />
+
+        <service android:name=".MyFireBaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".NotificationService"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>
