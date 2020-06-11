@@ -13,6 +13,12 @@ import android.widget.EditText;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class ArtistLogIn extends AppCompatActivity {
 
     EditText password;
@@ -20,6 +26,7 @@ public class ArtistLogIn extends AppCompatActivity {
     boolean appropriatePassword;
     boolean appropriateEmail;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    Spotify spotify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +93,37 @@ public class ArtistLogIn extends AppCompatActivity {
     public void LogInClicked (View view) {
         if(appropriateEmail && appropriatePassword) {
             //login request
+            /*Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://c9e439fa-e868-48e8-b329-06131b75737c.mock.pstmn.io")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
+
+            spotify = retrofit.create(Spotify.class);
+            Users users = new Users();
+
+
+            Call<Users> call = spotify.artistLogIn(users);
+
+            call.enqueue(new Callback<Users>() {
+                @Override
+                public void onResponse(Call<Users> call, Response<Users> response) {
+                    if (!response.isSuccessful()) {
+                        Log.i("INFO", "request failed");
+                        return;
+                    }
+
+                    Users userResponse = response.body();
+                    Log.i("INFO", "success");
+                    Log.i("INFO", userResponse.toString());
+                }
+
+                @Override
+                public void onFailure(Call<Users> call, Throwable t) {
+                    Log.i("ERROR", t.getMessage());
+                }
+            });
+*/
 
             Intent intent = new Intent(getApplicationContext(), ArtistWelcomeScreen.class);
             startActivity(intent);

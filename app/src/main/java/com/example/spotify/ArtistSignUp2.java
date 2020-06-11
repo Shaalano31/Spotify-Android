@@ -29,7 +29,7 @@ public class ArtistSignUp2 extends AppCompatActivity {
     String username;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     boolean appropriateEmail;
-    private  Spotify spotify;
+    Spotify spotify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +88,7 @@ public class ArtistSignUp2 extends AppCompatActivity {
         if(appropriateEmail) {
             //sign up request
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://c9e439fa-e868-48e8-b329-06131b75737c.mock.pstmn.io/")
+                    .baseUrl("https://c9e439fa-e868-48e8-b329-06131b75737c.mock.pstmn.io")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
@@ -100,14 +100,14 @@ public class ArtistSignUp2 extends AppCompatActivity {
     }
 
     private void artistSignUp() {
-        Users users = new Users("{Khaled Ali",email.getText().toString(),password, "11-10-1999","Male}");
+        Users users = new Users(username, email.getText().toString(), password, "11-10-1999", gender.getSelectedItem().toString());
 
         Call<Users> call = spotify.artistSignUp(users);
 
         call.enqueue(new Callback<Users>() {
             @Override
             public void onResponse(Call<Users> call, Response<Users> response) {
-                if(!response.isSuccessful()) {
+                if (!response.isSuccessful()) {
                     Log.i("INFO", "request failed");
                     return;
                 }
@@ -123,6 +123,4 @@ public class ArtistSignUp2 extends AppCompatActivity {
             }
         });
     }
-
-
 }
