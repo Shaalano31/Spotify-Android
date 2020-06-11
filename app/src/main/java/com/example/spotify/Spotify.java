@@ -78,11 +78,17 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface Spotify {
-  @GET("/PushNot1")
+  @GET("/EnterHomescreen")
   Call<Notifications>  getPushnotification1(@Header("x-auth") String txt);
 
-  @GET("/PushNot2")
+  @GET("/FollowArtist")
   Call<Notifications>  getPushnotification2(@Header("x-auth") String txt);
+
+  @GET("/LikeAPlaylist")
+  Call<Notifications>  getPushnotification3(@Header("x-auth") String txt);
+
+  @GET("/AddAsong")
+  Call<Notifications>  getPushnotification4(@Header("x-auth") String txt);
 
   @GET("/ShareSong")
   Call<Tracks>  getSongLink(@Header("x-auth") String txt);

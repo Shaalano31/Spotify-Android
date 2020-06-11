@@ -297,7 +297,7 @@ public void NotificationLogClick(View view)
                 .build();
         Spotify spotify = retrofit.create(Spotify.class);
 
-        Call<Notifications> call= spotify.getPushnotification2(usertoken);
+        Call<Notifications> call= spotify.getPushnotification3(usertoken);
         call.enqueue(new Callback<Notifications>() {
             @Override
             public void onResponse(Call<Notifications> call, Response<Notifications> response) {
@@ -341,7 +341,7 @@ public void NotificationLogClick(View view)
              .build();
      Spotify spotify = retrofit.create(Spotify.class);
 
-     Call<Notifications> call= spotify.getPushnotification2(usertoken);
+     Call<Notifications> call= spotify.getPushnotification4(usertoken);
      call.enqueue(new Callback<Notifications>() {
          @Override
          public void onResponse(Call<Notifications> call, Response<Notifications> response) {
@@ -432,7 +432,7 @@ public void NotificationFollowArtistApi(View view)
             .build();
     Spotify spotify = retrofit.create(Spotify.class);
 
-    Call<Notifications> call= spotify.getPushnotification1(usertoken);
+    Call<Notifications> call= spotify.getPushnotification2(usertoken);
     call.enqueue(new Callback<Notifications>() {
         @Override
         public void onResponse(Call<Notifications> call, Response<Notifications> response) {
