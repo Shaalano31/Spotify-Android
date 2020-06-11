@@ -1,3 +1,4 @@
+/*
 package com.example.spotify;
 
 import android.app.DatePickerDialog;
@@ -244,3 +245,4 @@ public class signUp3 extends AppCompatActivity {
 
 }
 
+*/

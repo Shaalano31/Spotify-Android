@@ -25,6 +25,17 @@ public class Users {
     @Expose
     private String dateOfBirth;
 
+    public Users(String userName, String email, String password, String dateOfBirth, String gender) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+}
+
+    public Users() {
+
+    }
 
     public String getUserName() {
         return userName;

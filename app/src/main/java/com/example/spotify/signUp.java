@@ -1,6 +1,5 @@
 package com.example.spotify;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,9 +26,9 @@ public class signUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up5);
 
-        username = (EditText) findViewById(R.id.usernameEditText2);
+        username = (EditText) findViewById(R.id.usernameEditText);
         password = (EditText) findViewById(R.id.passworEditText);
-        next2 = (Button) findViewById(R.id.next1Button);
+        next2 = (Button) findViewById(R.id.nextButton);
         missing_info = true;
         missing_info1 = true;
 
@@ -150,16 +149,16 @@ public class signUp extends AppCompatActivity {
                 {
 
 
-                    Intent i = new Intent(signUp.this, signUp2.class);
+                    //Intent i = new Intent(signUp.this, signUp2.class);
 
 
                    user = new userInfo();
                     user.password =valid_Password ;   // passing the userinfo to another activity
                     user.username =valid_username;
                     Log.i("done clicked"," " + valid_Password + " " + valid_username  );
-                   i.putExtra("userinfo", user);
+                   //i.putExtra("userinfo", user);
 
-                    startActivity(i);
+                    //startActivity(i);
 
 
                 }

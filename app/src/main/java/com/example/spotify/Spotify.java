@@ -38,4 +38,7 @@ public interface Spotify {
 
     @GET("/artists")
     Call<List<Artists>> getSeveralArtists(@Header("x-auth") String txt);
+
+    @POST("artist/signup")
+    Call<Users> artistSignUp(@Body Users users);
 }

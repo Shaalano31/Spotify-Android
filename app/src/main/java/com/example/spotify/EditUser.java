@@ -89,7 +89,7 @@ public class EditUser extends AppCompatActivity {
 
 
 
-        username = (EditText) findViewById(R.id.usernameEditText2);
+        username = (EditText) findViewById(R.id.usernameEditText);
         oPass = (EditText) findViewById(R.id.passworEditText);
         nPass = (EditText) findViewById(R.id.newpassworEditText);
          save= (TextView)  findViewById(R.id.SavetextView);

@@ -1,3 +1,4 @@
+/*
 package com.example.spotify;
 
 import android.content.Intent;
@@ -120,7 +121,7 @@ public class signUp2 extends AppCompatActivity {
 
                     if (missing_info == false)
                     {
-                        Intent I = new Intent(signUp2.this, signUp3.class);
+                        //Intent I = new Intent(signUp2.this, signUp3.class);
 
                         Intent oldIntent  = getIntent();  // getting the object we created in the last activity
                         user= (userInfo)oldIntent.getParcelableExtra("userinfo") ;
@@ -150,3 +151,4 @@ public class signUp2 extends AppCompatActivity {
 
     }
 }
+*/
