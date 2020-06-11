@@ -115,7 +115,7 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/guidelinePlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/verticalAllignGuideLine"
         app:layout_constraintTop_toTopOf="@+id/bottomOptionsGuideLine" />
@@ -127,26 +127,36 @@
         android:layout_height="0dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/guidelinePlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/verticalAllignGuideLine"
         app:layout_constraintTop_toTopOf="@+id/topOfListGL" />
 
+    //---------------------------------------------------------------
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/albumListView"
-        android:tag="55023"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:alpha="0"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"
+        android:tag="55023"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/guidelinePlayer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/verticalAllignGuideLine"
-        app:layout_constraintTop_toTopOf="@+id/bottomOptionsGuideLine" />
+        app:layout_constraintTop_toTopOf="@+id/bottomOptionsGuideLine"
+        app:layout_constraintVertical_bias="1.0">
+    </androidx.recyclerview.widget.RecyclerView>
 
-    //---------------------------------------------------------------
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.91" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -187,7 +197,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9015048" />
+        app:layout_constraintGuide_percent="0.91" />
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinePlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.82" />
+
+
+
+
+
+    <Button
+        android:id="@+id/Player"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textColor="#FFFFFF"
+        android:background="#222121"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelinePlayer" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -335,5 +370,63 @@
 
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textViewSongPlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineText"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewPlaylist"
+        app:layout_constraintStart_toStartOf="@+id/verticalAllignGuideLine"
+        app:layout_constraintTop_toTopOf="@+id/guidelinePlayer"
+        android:translationZ="3dp"/>
+    <TextView
+        android:id="@+id/textViewArtistPlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewPlaylist"
+        app:layout_constraintStart_toStartOf="@+id/verticalAllignGuideLine"
+        app:layout_constraintTop_toTopOf="@+id/guidelineText"
+        android:translationZ="3dp"/>
+
+    <SeekBar
+        android:id="@+id/musicScrubber2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progressBackgroundTint="@color/grey"
+        android:progressTint="@color/white"
+        android:thumbTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/Player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelinePlayer"
+        android:layout_marginBottom="3sp"
+        android:clickable="false"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.875" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/imageViewPlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@drawable/pausee"
+        app:backgroundTint="@color/spotifyGreen"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/musicScrubber2"
+        android:layout_marginBottom="10sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

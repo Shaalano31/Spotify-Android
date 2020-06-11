@@ -7,6 +7,7 @@
     android:background="#000000"
     tools:context=".SongsList">
 
+
     <RelativeLayout
         android:id="@+id/parent_layout"
         android:layout_width="0dp"
@@ -35,7 +36,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@color/black"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -43,6 +46,24 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.4514364" />
+
+    <Button
+        android:id="@+id/Player"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="fill"
+        android:textColor="#FFFFFF"
+        android:visibility="visible"
+        android:stateListAnimator="@null"
+        android:background="#222121"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelinePlayer"
+        app:layout_constraintVertical_bias="0.0"
+        />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -64,6 +85,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2" />
 
+
     <TextView
         android:id="@+id/listName"
         android:layout_width="wrap_content"
@@ -77,4 +99,85 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinePlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinePlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <TextView
+        android:id="@+id/textViewSong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lineto"
+        android:text=""
+        android:textColor="#FAF9F9"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:translationZ="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelinePlayer2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelinePlayer" />
+
+    <TextView
+        android:id="@+id/textViewArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lineto"
+        android:text=""
+        android:textColor="#FAF9F9"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:translationZ="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelinePlayer2" />
+
+    <SeekBar
+        android:id="@+id/musicScrubber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:progressBackgroundTint="@color/grey"
+        android:progressTint="@color/white"
+        android:thumbTint="#80000000"
+        app:layout_constraintBottom_toTopOf="@+id/Player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="4sp"
+        app:layout_constraintTop_toTopOf="@+id/guidelinePlayer" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3p2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.75" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:backgroundTint="@color/spotifyGreen"
+        app:layout_constraintStart_toStartOf="@+id/guideline3p2"
+        app:layout_constraintTop_toBottomOf="@id/musicScrubber"
+        android:layout_marginBottom="8sp"
+        app:srcCompat="@drawable/pausee"
+        android:translationZ="2dp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

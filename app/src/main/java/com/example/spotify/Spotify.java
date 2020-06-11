@@ -29,13 +29,18 @@ public interface Spotify {
     @POST("users/login")
     Call<Void> userLogIn(@Body Users user);
 
-    @POST("/users/signup")
+    @POST("users/signup")
     Call<Users>  createUser(@Body Users users);
 
     @POST("playlists")
     Call<Playlists> createPlaylist(@Header ("x-auth") String txt,
                                    @Body Playlists playlist);
 
-    @GET("/artists")
+    @GET("artists")
     Call<List<Artists>> getSeveralArtists(@Header("x-auth") String txt);
+
+    @GET("tracks/1")
+    Call<List<Songs>> getSongs();
+
+
 }

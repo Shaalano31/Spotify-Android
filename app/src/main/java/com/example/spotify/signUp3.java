@@ -195,7 +195,7 @@ public class signUp3 extends AppCompatActivity {
             monthh= "0"+Integer.toString(month + 1);
         }
 
-        Users newUser= new Users (user.username, user.email,user.password,false,false,dayy,monthh,Integer.toString(year),user.gender);
+        Users newUser= new Users ();
 
         Call<Users> call = spotify.createUser(newUser);
 

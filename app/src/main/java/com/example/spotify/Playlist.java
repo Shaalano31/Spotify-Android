@@ -1,23 +1,37 @@
 package com.example.spotify;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,10 +58,15 @@ public class Playlist extends AppCompatActivity {
     RecyclerView playlistView;
     RecyclerView artistView;
     RecyclerView albumView;
+    static SeekBar scrubber;
+    FloatingActionButton flipPlayPauseButton;
 
     RecyclerViewAdapter playistAdapter;
     RecyclerViewAdapter artistAdapter;
     RecyclerViewAdapter albumAdapter;
+
+    static TextView textViewArtist;
+    static TextView textViewSong;
 
     Button playlistButton;
     Button artistButton;
@@ -63,6 +82,9 @@ public class Playlist extends AppCompatActivity {
         artistView = findViewById(R.id.artistListView);
         albumView = findViewById(R.id.albumListView);
         createPlaylist = findViewById(R.id.createPlaylistButtonLayout);
+        textViewArtist = findViewById(R.id.textViewArtistPlaylist);
+        textViewSong = findViewById(R.id.textViewSongPlaylist);
+        flipPlayPauseButton = findViewById(R.id.imageViewPlaylist);
 
         playlistVersion= new ArrayList<>();
         artistVersion = new ArrayList<>();
@@ -71,7 +93,8 @@ public class Playlist extends AppCompatActivity {
         playlistImages = new ArrayList<>();
         artistImages = new ArrayList<>();
         albumImages = new ArrayList<>();
-
+        scrubber = findViewById(R.id.musicScrubber2);
+        Button mPlayer;
         playlistVersion.add("Likes");
 
         versionNumber.add("1.0");
@@ -85,19 +108,28 @@ public class Playlist extends AppCompatActivity {
 
         playlistImages.add(Integer.toString(R.drawable.likes));
 
-        RecyclerViewAdapter playlistAdapter = new RecyclerViewAdapter(this, playlistVersion, playlistImages,false,true);
+        RecyclerViewAdapter playlistAdapter = new RecyclerViewAdapter(this, playlistVersion, playlistImages, null,null,false,true);
         playlistView.setAdapter(playlistAdapter);
         playlistView.setLayoutManager(new LinearLayoutManager(this));
 
-        RecyclerViewAdapter artistAdapter = new RecyclerViewAdapter(this, artistVersion, artistImages,true,true);
+        RecyclerViewAdapter artistAdapter = new RecyclerViewAdapter(this, artistVersion, artistImages, null,null,true,true);
         artistAdapter.setCircular(true);
         artistView.setAdapter(artistAdapter);
         artistView.setLayoutManager(new LinearLayoutManager(this));
 
-        RecyclerViewAdapter albumAdapter = new RecyclerViewAdapter(this, albumVersion, albumImages,true,true);
+        RecyclerViewAdapter albumAdapter = new RecyclerViewAdapter(this, albumVersion, albumImages,null,null,true,true);
         albumAdapter.setCircular(true);
         albumView.setAdapter(albumAdapter);
         albumView.setLayoutManager(new LinearLayoutManager(this));
+        mPlayer = findViewById(R.id.Player);
+
+        mPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MusicPlayerScreen.class);
+                startActivity(i);
+            }
+        });
 
 
         playlistButton = findViewById(R.id.playlistButton);
@@ -105,14 +137,54 @@ public class Playlist extends AppCompatActivity {
         albumButton = findViewById(R.id.albumButton);
         playlistButton.setTextColor(Color.parseColor("#1DB954"));
 
+        flipPlayPauseButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                if(mServiceBound)
+                    mBoundService.togglePlayer();
+            }
+        });
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://52.14.190.202:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         spotifyApi = retrofit.create(Spotify.class);
 
+
     }
 
+    private BroadcastReceiver mMessageReciever = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String name = intent.getStringExtra("name");
+            textViewSong.setText(name);
+            textViewArtist.setText(intent.getStringExtra("artistname"));
+            Intent i = new Intent(getApplicationContext(),PlayerService.class);
+            bindService(i, mServiceConnection, Context.BIND_AUTO_CREATE);
+        }
+    };
+    private BroadcastReceiver mMessageReciever2 = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean isPlaying = intent.getBooleanExtra("isPlaying",false);
+            flipPlayPause(isPlaying);
+
+        }
+    };
+    @Override
+    protected void onResume() {
+        super.onResume();       //recieve any message from a broadcast and give it to mMessageReceiver ONLY if it has the tag changePlayButton
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReciever, new IntentFilter("name"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReciever2, new IntentFilter("mediaProgress"));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReciever);
+    }
 
     public void goToSettings (View view) {
         //Intent intent = new Intent(getApplicationContext(), Settings.class);
@@ -140,7 +212,7 @@ public class Playlist extends AppCompatActivity {
             playlistVersion.add(item);
             playlistImages.add(Integer.toString(R.drawable.likes));
             versionNumber.add("");
-            playistAdapter = new RecyclerViewAdapter(this, playlistVersion, playlistImages,false,true);
+            playistAdapter = new RecyclerViewAdapter(this, playlistVersion, playlistImages,null,null,false,true);
             playlistView.setAdapter(playistAdapter);
         }
         else if(key==1){
@@ -264,4 +336,29 @@ public class Playlist extends AppCompatActivity {
         }
     }
 
+
+    private void flipPlayPause(boolean isPlaying)
+    {
+        if(isPlaying)
+            flipPlayPauseButton.setImageResource(R.drawable.pausee);
+        else
+            flipPlayPauseButton.setImageResource(R.drawable.playy);
+
+    }
+
+    private ServiceConnection mServiceConnection =new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            PlayerService.MyBinder myBinder = (PlayerService.MyBinder) service;
+            mBoundService = myBinder.getService();
+            mServiceBound = true;
+        }
+        @Override
+        public void onServiceDisconnected(ComponentName name){
+            mServiceBound = false;
+        }
+    };
+
+    PlayerService mBoundService;
+    boolean mServiceBound = false;
 }
