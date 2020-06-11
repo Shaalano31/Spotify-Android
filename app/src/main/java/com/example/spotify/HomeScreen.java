@@ -3,14 +3,27 @@ package com.example.spotify;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.app.Notification;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.annotations.SerializedName;
@@ -35,6 +48,8 @@ public class HomeScreen extends AppCompatActivity {
     private ArrayList<ArrayList<String>> picUrls= new ArrayList<ArrayList<String>>() ;
     private ArrayList<String> Titles = new ArrayList<String>() ;
     private NotificationManagerCompat notificationManager;
+    TableLayout tab;////////*******************
+    ArrayList<TableRow> trlist;   ////////*******************
 //////////////////////////////////////////////////////////////////////////////////////////
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,7 +59,8 @@ public class HomeScreen extends AppCompatActivity {
         notificationManager= NotificationManagerCompat.from(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
+        tab = (TableLayout)findViewById(R.id.tab);////////*******************
+        trlist= new ArrayList<TableRow>(); ////////*******************
         String token = FirebaseInstanceId.getInstance().getToken();
         Log.d("FCMAPP", "Token is "+token);
 /////////////////////////////////////////////////////////////////////////STATIC HOME SCREEN
@@ -62,10 +78,55 @@ public class HomeScreen extends AppCompatActivity {
        initRecyclerView();
        ////////////////////////////////////////////////////End of the code STATIC HOME SCREEN
 
-        NotificationWelcomeApi();
-
+        NotificationWelcomeApi();////////*******************
+        LocalBroadcastManager.getInstance(this).registerReceiver(onNotice, new IntentFilter("Msg"));////////*******************
 
     }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private BroadcastReceiver onNotice= new BroadcastReceiver()
+    {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            String pack = intent.getStringExtra("package");
+            String title = intent.getStringExtra("title");
+            String text = intent.getStringExtra("text");
+
+
+
+            TableRow tr = new TableRow(getApplicationContext());
+            tr.setLayoutParams(new TableRow.LayoutParams( TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            TextView textview = new TextView(getApplicationContext());
+            textview.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT,1.0f));
+            textview.setTextSize(20);
+            textview.setTextColor(Color.parseColor("#0B0719"));
+            ///////////////////////////////////
+            String html =pack +"<br><b>" + title + " : </b>" + text;
+            textview.setText(fromHtml(html));
+            ////////////////////////////////////////
+            tr.addView(textview);
+            trlist.add(tr);
+
+        }
+
+        @SuppressWarnings("deprecation")
+        public Spanned fromHtml(String html){
+            if(html == null){
+                // return an empty spannable if the html is null
+                return new SpannableString("");
+            }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                // FROM_HTML_MODE_LEGACY is the behaviour that was used for versions below android N
+                // we are using this flag to give a consistent behaviour
+                return Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
+            } else {
+                return Html.fromHtml(html);
+            }
+        }
+
+    };
+
 
     ///////////////////////////////////////////////////////////////functions ofstatic home screen
     @Override
@@ -212,11 +273,16 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 public void NotificationLogClick(View view)
 {
-    Intent intent = new Intent(getApplicationContext(), NotificationListener.class);
+   Intent intent = new Intent(getApplicationContext(), NotificationListener.class);
+      //////////////////////////////// put tab here and add ton intends
+   ///  intent.putExtra(" ArrayList<TableRow>", trlist);
+    ////////////////////////////////
     startActivity(intent);
 }
 

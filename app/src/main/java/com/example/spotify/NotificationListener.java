@@ -22,6 +22,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class NotificationListener extends AppCompatActivity {
     TableLayout tab;
     @Override
@@ -29,6 +31,22 @@ public class NotificationListener extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_listener);
         tab = (TableLayout)findViewById(R.id.tab);
+
+        /////////extract  inh intent extra here
+        /*
+        Intent oldIntent  = getIntent();  // getting the object we created in the last activity
+       ArrayList<TableRow> R =(ArrayList<TableRow>)  oldIntent.getParcelableExtra("ArrayList<TableRow>") ;
+        int i = 0;
+        while (i<R.size())
+        { tab.addView(R.get(i));
+            i++;
+        }
+         */
+        /////////////////////////////////
+
+
+
+
         LocalBroadcastManager.getInstance(this).registerReceiver(onNotice, new IntentFilter("Msg"));
     }
 
