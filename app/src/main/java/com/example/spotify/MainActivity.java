@@ -9,18 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.spotify.LogInActivity;
-import com.example.spotify.signUp;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
@@ -47,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                Intent I = new Intent(MainActivity.this, HomeScreen.class);
+                Intent I = new Intent(MainActivity.this,HomeScreen.class);
                 startActivity(I);
             }
         });
@@ -91,22 +85,22 @@ public class MainActivity extends AppCompatActivity {
         };
 
         /**loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.i("Details", "Success");
-                accessToken = loginResult.getAccessToken();
-                useLoginInformation(accessToken);
-            }
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+        Log.i("Details", "Success");
+        accessToken = loginResult.getAccessToken();
+        useLoginInformation(accessToken);
+        }
 
-            @Override
-            public void onCancel() {
-                Log.i("Info", "Cancel");
-            }
+        @Override
+        public void onCancel() {
+        Log.i("Info", "Cancel");
+        }
 
-            @Override
-            public void onError(FacebookException error) {
-                Log.i("Info", "Error");
-            }
+        @Override
+        public void onError(FacebookException error) {
+        Log.i("Info", "Error");
+        }
         });**/
 
     }
@@ -126,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
          1st Param - AccessToken
          2nd Param - Callback (which will be invoked once the request is successful)
          **/
-        
+
         GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
             //OnCompleted is invoked once the GraphRequest is successful
             @Override
@@ -182,3 +176,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+

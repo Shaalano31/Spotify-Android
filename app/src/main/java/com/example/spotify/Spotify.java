@@ -26,18 +26,6 @@ public interface Spotify {
     Call<Search> getSearch(@Query("word") String word);
 
 
-    @GET("/EnterHomescreen")
-    Call<Notifications>  getPushnotification1(@Header("x-auth") String txt);
-
-    @GET("/FollowArtist")
-    Call<Notifications>  getPushnotification2(@Header("x-auth") String txt);
-
-    @GET("/LikeAPlaylist")
-    Call<Notifications>  getPushnotification3(@Header("x-auth") String txt);
-
-    @GET("/AddAsong")
-    Call<Notifications>  getPushnotification4(@Header("x-auth") String txt);
-
     @GET("/ShareSong")
     Call<Tracks>  getSongLink(@Header("x-auth") String txt);
 
@@ -59,5 +47,6 @@ public interface Spotify {
 
 
 }
+
 
 
