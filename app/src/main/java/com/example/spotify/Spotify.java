@@ -88,8 +88,6 @@ public interface Spotify {
   Call<Tracks>  getSongLink(@Header("x-auth") String txt);
 
 
-
-
   @GET("Artists/{id}")
   Call<Artists> getArtist(@Path("id") String id );
 

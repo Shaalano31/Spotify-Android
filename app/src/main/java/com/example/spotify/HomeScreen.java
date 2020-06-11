@@ -22,9 +22,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Header;
-
 import static com.example.spotify.App.CHANNEL_2_ID;
 import static com.example.spotify.App.CHANNEL_3_ID;
+
 public class HomeScreen extends AppCompatActivity {
 
 
@@ -209,7 +209,17 @@ public class HomeScreen extends AppCompatActivity {
     {
         Intent intent = new Intent(getApplicationContext(), Playlist.class);
         startActivity(intent);
+
     }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public void NotificationLogClick(View view)
+{
+    Intent intent = new Intent(getApplicationContext(), NotificationListener.class);
+    startActivity(intent);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public  void NotificationUserActionApi(View view)
     {
