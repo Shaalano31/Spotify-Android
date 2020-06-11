@@ -5,64 +5,67 @@ import com.google.gson.annotations.SerializedName;
 
 public class Users {
 
-    @SerializedName("userName")
-    @Expose
-    private String userName;
 
-    @SerializedName("email")
-    @Expose
-    private String email;
+        @SerializedName("userName")
+        @Expose
+        private String userName;
+        @SerializedName("email")
+        @Expose
+        private String email;
+        @SerializedName("password")
+        @Expose
+        private String password;
+        @SerializedName("isPremium")
+        @Expose
+        private boolean isPremium;
+        @SerializedName("isActive")
+        @Expose
+        private boolean isActive;
+        @SerializedName("birthDate")
+        @Expose
+        private String birthDate;
+        @SerializedName("gender")
+        @Expose
+        private String gender;
+        @SerializedName("body")
+        @Expose
+        private String text;
 
-    @SerializedName("password")
-    @Expose
-    private String password;
 
-    @SerializedName("gender")
-    @Expose
-    private String gender;
+        public void setEmail(String email) {
+            this.email = email;
+        }
 
-    @SerializedName("dateOfBirth")
-    @Expose
-    private String dateOfBirth;
+        public void setPassword(String password) {
+            this.password = password;
+        }
 
+        public String getUserName() {
+            return userName;
+        }
 
-    public String getUserName() {
-        return userName;
+        public String getEmail() {
+            return email;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public boolean isPremium() {
+            return isPremium;
+        }
+    public boolean isActive() {
+        return isActive;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public String getBirthDate() {
+        return birthDate;
     }
 
     public String getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
 }

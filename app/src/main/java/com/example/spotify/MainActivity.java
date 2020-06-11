@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                Intent I = new Intent(MainActivity.this, signUp.class);
+                Intent I = new Intent(MainActivity.this, HomeScreen.class);
                 startActivity(I);
             }
         });

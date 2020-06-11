@@ -25,6 +25,14 @@ public class Tracks {
     @Expose
     private String artistID;
 
+    @SerializedName("songLink")
+    @Expose
+    private String songLink;
+
+    public String getSongLink() {
+        return songLink;
+    }
+
     public String getId() {
         return id;
     }
@@ -64,4 +72,7 @@ public class Tracks {
     public void setArtistID(String artistID) {
         this.artistID = artistID;
     }
+
+
+
 }
