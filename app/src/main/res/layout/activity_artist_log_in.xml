@@ -94,12 +94,24 @@
         android:layout_marginEnd="24dp"
 
         android:gravity="center"
-        android:hint="Username"
+        android:hint="Email"
         android:singleLine="true"
         android:textColor="#1DB954"
         android:textColorHint="#666565"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/passwordLoginEdittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spotifyImageView" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Artist"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/emailLoginEdittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spotifyImageView" />
