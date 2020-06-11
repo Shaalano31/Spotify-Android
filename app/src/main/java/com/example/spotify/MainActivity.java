@@ -3,24 +3,20 @@ package com.example.spotify;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.spotify.LogInActivity;
-import com.example.spotify.signUp;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
@@ -36,28 +32,63 @@ public class MainActivity extends AppCompatActivity {
     AccessToken accessToken;
     //LoginManager loginManager;
 
-    Button next3;
+    //Button next3;
 
     public void SignUp(View view) {
 
-        next3 = findViewById(R.id.signup);
+        /*next3 = findViewById(R.id.signup);
 
         next3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                Intent I = new Intent(MainActivity.this, signUp.class);
+                Intent I = new Intent(MainActivity.this,HomeScreen.class);
                 startActivity(I);
             }
+        });*/
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        //alert.setTitle("Notification");
+        alert.setMessage("Choose type of user");
+        alert.setPositiveButton("Artist", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //intent to artist sign up screen
+                Intent intent = new Intent(getApplicationContext(), ArtistSignUp.class);
+                startActivity(intent);
+            }
         });
-
+        alert.setNegativeButton("Regular", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //show alert saying this is unavailable currently
+            }
+        });
+        alert.create().show();
     }
 
     public void LogIn(View view) {
-        // go to log in screen
-        Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
-        startActivity(intent);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        //alert.setTitle("Notification");
+        alert.setMessage("Choose type of user");
+        alert.setPositiveButton("Artist", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //intent to artist sign up screen
+                Intent intent = new Intent(getApplicationContext(), ArtistLogIn.class);
+                startActivity(intent);
+            }
+        });
+        alert.setNegativeButton("Regular", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // go to log in screen
+                Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+                startActivity(intent);
+            }
+        });
+        alert.create().show();
+
     }
 
     private static final String EMAIL = "email";
@@ -91,22 +122,22 @@ public class MainActivity extends AppCompatActivity {
         };
 
         /**loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.i("Details", "Success");
-                accessToken = loginResult.getAccessToken();
-                useLoginInformation(accessToken);
-            }
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+        Log.i("Details", "Success");
+        accessToken = loginResult.getAccessToken();
+        useLoginInformation(accessToken);
+        }
 
-            @Override
-            public void onCancel() {
-                Log.i("Info", "Cancel");
-            }
+        @Override
+        public void onCancel() {
+        Log.i("Info", "Cancel");
+        }
 
-            @Override
-            public void onError(FacebookException error) {
-                Log.i("Info", "Error");
-            }
+        @Override
+        public void onError(FacebookException error) {
+        Log.i("Info", "Error");
+        }
         });**/
 
     }
@@ -126,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
          1st Param - AccessToken
          2nd Param - Callback (which will be invoked once the request is successful)
          **/
-        
+
         GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
             //OnCompleted is invoked once the GraphRequest is successful
             @Override
@@ -182,3 +213,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+

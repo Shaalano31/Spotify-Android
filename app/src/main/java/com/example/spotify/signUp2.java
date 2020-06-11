@@ -1,3 +1,4 @@
+/*
 package com.example.spotify;
 
 import android.content.Intent;
@@ -25,7 +26,6 @@ public class signUp2 extends AppCompatActivity {
     String valid_email;
     boolean missing_info ;
     String selected;
-    char convertertoUpper ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +51,7 @@ public class signUp2 extends AppCompatActivity {
 
         // GET SELECTED
 
-
-        // convertertoUpper= selected.charAt(0);
-
+         selected = gender.getSelectedItem().toString();
 
 
         //check email
@@ -123,14 +121,12 @@ public class signUp2 extends AppCompatActivity {
 
                     if (missing_info == false)
                     {
-                        Intent I = new Intent(signUp2.this, signUp3.class);
+                        //Intent I = new Intent(signUp2.this, signUp3.class);
 
                         Intent oldIntent  = getIntent();  // getting the object we created in the last activity
                         user= (userInfo)oldIntent.getParcelableExtra("userinfo") ;
                         user.setEmail(valid_email);  // passing the userinfo to another activity
-
                         user.setGender(selected);
-
                         Log.i("done clicked"," " + user.password + " " + user.username + " " + user.email+ " " + user.gender );
                          I.putExtra("userinfo", user);
 
@@ -155,3 +151,4 @@ public class signUp2 extends AppCompatActivity {
 
     }
 }
+*/

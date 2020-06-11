@@ -21,27 +21,37 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CreatePlaylist extends AppCompatActivity {
 
+    private interface OKCallback {
+        void onSuccess();
+
+        void onFailure();
+    }
+
     EditText playlistName;
     TextView set;
     TextView cancel;
     Intent resultIntent;
     SQLiteDatabase userInfoDatabase;
     String userToken;
-    boolean done=false;
     Spotify spotifyApi;
     public void onClick(View view){
 
         if(view.getTag().toString().equals("set")){
-            createPlaylistApi();
-            if(done) {
-                String playlistNameStr = playlistName.getText().toString();
-                resultIntent.putExtra("playlist name", playlistNameStr);
-                setResult(RESULT_OK, resultIntent);
-                finish();
-            }else{
-                Toast.makeText(getApplicationContext(),"Error, Try again later.", Toast.LENGTH_SHORT).show();
+            createPlaylistApi(new OKCallback() {
+                @Override
+                public void onSuccess() {
+                    String playlistNameStr = playlistName.getText().toString();
+                    resultIntent.putExtra("playlist name", playlistNameStr);
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
+                }
 
-            }
+                @Override
+                public void onFailure() {
+                    Toast.makeText(getApplicationContext(),"Error, Try again later.", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
         else if(view.getTag().toString().equals("cancel")){
             setResult(RESULT_CANCELED);
@@ -58,7 +68,7 @@ public class CreatePlaylist extends AppCompatActivity {
         playlistName = findViewById(R.id.playlistNameEditText);
         resultIntent = new Intent();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://52.14.190.202:8000/")
+                .baseUrl("https://560a8140-b758-4978-bd0a-dc372f8a99b0.mock.pstmn.io")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         spotifyApi = retrofit.create(Spotify.class);
@@ -76,7 +86,7 @@ public class CreatePlaylist extends AppCompatActivity {
 
     }
 
-    private void createPlaylistApi(){
+    private void createPlaylistApi(final OKCallback okCallback){
         Playlists playlist = new Playlists();
         playlist.setPlaylistName(playlistName.getText().toString());
         Call<Playlists> call = spotifyApi.createPlaylist(userToken,playlist);
@@ -87,16 +97,19 @@ public class CreatePlaylist extends AppCompatActivity {
             public void onResponse(Call<Playlists> call, Response<Playlists> response) {
                 if(!response.isSuccessful()){
                     Toast.makeText(getApplicationContext(),"Failed, Code:"+ response.code(), Toast.LENGTH_SHORT).show();
-                    done = false;
+
+                    okCallback.onFailure();
                     return;
                 }
-                done = true;
+
+                okCallback.onSuccess();
             }
 
             @Override
             public void onFailure(Call<Playlists> call, Throwable t) {
                 Log.d("Error",t.getMessage());
-                done = false;
+
+                okCallback.onFailure();
                 return;
 
             }
@@ -104,3 +117,4 @@ public class CreatePlaylist extends AppCompatActivity {
 
     }
 }
+

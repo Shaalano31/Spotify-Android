@@ -120,7 +120,8 @@ public class RecyclerAdapterHome extends RecyclerView.Adapter<RecyclerAdapterHom
 
             @Override   // neww to go to the playlist page
             public void onClick(View v) {
-                Log.i("done clicked", "VIEW is clicked ");
+
+                Log.i("done clicked", "home VIEW is clicked ");
             }
         }
 

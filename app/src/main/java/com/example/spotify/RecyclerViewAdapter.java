@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,15 +25,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<String> mImageNames = new ArrayList<>();
     private ArrayList<String> mImages = new ArrayList<>();
+    private ArrayList<String> mUrls = new ArrayList<>();
+    private ArrayList<String> mArtistNames = new ArrayList<>();
     private Context mContext;
     private boolean playlistImageState;     // 1: for using it as urls, 0: for stored images
     private boolean isList;                 //used to check if this RecylcerView is a list of songs or a song in a list
     private boolean isCircular;             //check if list is for artists, then their icons will be circular
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> imageNames, ArrayList<String> images, boolean state,boolean islist) {
+    private onItemClickListener mItemClickListener;
+    public void setOnItemClickListener(onItemClickListener mItemClickListener) {
+        this.mItemClickListener = mItemClickListener;
+    }
+    public interface onItemClickListener {
+        void onItemClickListener(View view, int position, String url);
+    }
+
+    public RecyclerViewAdapter(Context context, ArrayList<String> imageNames, ArrayList<String> images,ArrayList<String> urls,ArrayList<String> ArtistNames, boolean state,boolean islist) {
         mImageNames = imageNames;
         mImages = images;
+        mUrls = urls;
         mContext = context;
+        mArtistNames = ArtistNames;
         playlistImageState=state;
         isList=islist;
     }
@@ -84,6 +96,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("image_name", mImageNames.get(position));
                 mContext.startActivity(intent);
                 }
+                if(mItemClickListener != null) {
+                    mItemClickListener.onItemClickListener(view, position, mUrls.get(position));
+                }
             }
         });
     }
@@ -92,6 +107,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return mImageNames.size();
     }
+
 
     public void setCircular(boolean x){
         isCircular=x;
@@ -122,6 +138,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
+
 }
 
 

@@ -11,8 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class EditUser extends AppCompatActivity {
-
-    userInfo user;
+/*
+    //userInfo user;
     EditText username;
     EditText oPass;
     EditText nPass;
@@ -89,7 +89,7 @@ public class EditUser extends AppCompatActivity {
 
 
 
-        username = (EditText) findViewById(R.id.usernameEditText2);
+        username = (EditText) findViewById(R.id.usernameEditText);
         oPass = (EditText) findViewById(R.id.passworEditText);
         nPass = (EditText) findViewById(R.id.newpassworEditText);
          save= (TextView)  findViewById(R.id.SavetextView);
@@ -140,7 +140,7 @@ public class EditUser extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Playlist.class);
         startActivity(intent);
     }
-
+*/
 }
 
 

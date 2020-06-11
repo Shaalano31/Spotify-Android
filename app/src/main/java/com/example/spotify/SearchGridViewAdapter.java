@@ -3,6 +3,7 @@ package com.example.spotify;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class SearchGridViewAdapter extends BaseAdapter {
 
@@ -59,16 +62,31 @@ public class SearchGridViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Log.i("info", genreNames[position]);
-                AlertDialog.Builder alert = new AlertDialog.Builder(context);
-                alert.setTitle("Notification");
-                alert.setMessage("The screens will be added in the next update");
-                alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                if(position==0){
+                    Intent i = new Intent(context,SongsList.class);
+                    i.putExtra("image_name",genreNames[position]);
+                    i.putExtra("image_url","https://oneroofstore.com/pub/media/catalog/product/cache/b66ee365b24b097094b341542fc7aa50/g/r/grx40_tfb_4h_02.png");
+                    context.startActivity(i);
+                }
+                else if(position==1)
+                {
+                    Intent i = new Intent(context,SongsList.class);
+                    i.putExtra("image_name",genreNames[position]);
+                    i.putExtra("image_url","https://png.pngtree.com/png-clipart/20191128/ourlarge/pngtree-hiphop-hip-hop-color-gradient-theme-effect-creative-font-png-image_86092.jpg");
+                    context.startActivity(i);
+                }
+                else {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                    alert.setTitle("Notification");
+                    alert.setMessage("The screens will be added in the next update");
+                    alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                });
-                alert.create().show();
+                        }
+                    });
+                    alert.create().show();
+                }
             }
         });
 

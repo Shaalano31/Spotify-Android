@@ -1,3 +1,4 @@
+/*
 package com.example.spotify;
 
 import android.app.DatePickerDialog;
@@ -24,8 +25,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class signUp3 extends AppCompatActivity {
 
-    
-    /*Button done ;
+    userInfo user;
+    Button done ;
     Button dateofBirth;
     Calendar cal ;
     DatePickerDialog dp ;
@@ -50,12 +51,11 @@ public class signUp3 extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-         spotify = retrofit.create(Spotify.class);
+        spotify = retrofit.create(Spotify.class);
 
         //getpost
         // getcomments
 
-        ////////////////////////////////////////////////////////////////////////////////////
 
         ////////////////////////////////////////////////////////////////////////////////////
 
@@ -152,87 +152,14 @@ public class signUp3 extends AppCompatActivity {
                             user = (userInfo) oldIntent.getParcelableExtra("userinfo");
                             user.setDateOfBirth(valid_date);  // passing the userinfo to another activity
 
-                           
+                            i.putExtra("userinfo", user);
 
                             startActivity(i);
 
-                          
-
-                          ////////////////////////////////////////////////////////creation of user
-                            createNewuser(user,spotify);
-                          /////////////////////////
-
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Please enter valid bithdate ", Toast.LENGTH_SHORT).show();
-                            Log.i("done clicked", "age nooooooo ");
-                        }
-
-                    }
-
-                });
+                            Log.i("done clicked", "age >12 ");
 
 
-            }
-
-
-        });
-//////////////creation of user function here
-
-    }
-    void  createNewuser(userInfo user,Spotify spotify )
-        {
-
-            String dayy = Integer.toString(day);
-            String monthh=Integer.toString(month + 1);
-
-            if(9>=day)
-            {
-                dayy= "0"+Integer.toString(day);
-            }
-            if(9>=month + 1)
-            {
-                monthh= "0"+Integer.toString(month + 1);
-            }
-
-            Users newUser= new Users (user.username, user.email,user.password,false,false,dayy,monthh,Integer.toString(year),user.gender);
-
-            Call<Users> call = spotify.createUser(newUser);
-
-            call.enqueue(new Callback<Users>() {
-                @Override
-                public void onResponse(Call<Users> call, Response<Users> response) {
-
-                    if (!response.isSuccessful()) {
-                        Log.i("Info", "RIP");
-                        return;
-                    }
-
-                    Users use = response.body();
-
-
-                    String content ="" ;
-
-                    content+= "userName:" + use.getUserName()+ "\n";
-
-                          
-
-                    content+= "email:" + use.getEmail()+ "\n";
-
-                    content+= "password:" + use.getPassword()+ "\n";
-
-                    content+= "isPremium:" + "false"+ "\n";
-
-                    content+= "isActive:" + "false"+ "\n";
-
-                    content+=  "day:" + use.getUserName()+ "\n";
-
-                    content+= "month:" + use.getUserName()+ "\n";
-
-                    content+= "year:" + use.getUserName()+ "\n";
-
-                    content+="gender" + use.getGender()+ "\n";
-
-                           
+                            Log.i("done clicked", " " + user.password + " " + user.username + " " + user.email + " " + user.gender + " " + valid_date);
 
 ////////////////////////////////////////////////////////creation of user
                             createNewuser(user,spotify);/////////////////////////
@@ -241,7 +168,6 @@ public class signUp3 extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Please enter valid bithdate ", Toast.LENGTH_SHORT).show();
                             Log.i("done clicked", "age nooooooo ");
                         }
-
 
                     }
 
@@ -283,7 +209,6 @@ public class signUp3 extends AppCompatActivity {
                     return;
                 }
 
-////////////////////////  bug_fixing_for_testing
                 Users use = response.body();
 
 
@@ -297,16 +222,8 @@ public class signUp3 extends AppCompatActivity {
                 content+= "month:" + use.getUserName()+ "\n";
                 content+= "year:" + use.getUserName()+ "\n";
                 content+="gender" + use.getGender()+ "\n";
-//////////////////////// 
-                @Override
-                public void onFailure(Call<Users> call, Throwable t) {
 
-
-                    Intent i = new Intent(signUp3.this, MainActivity.class);
-                    startActivity(i);
-////////////////////////  master
-
-                    Toast.makeText(getApplicationContext(), "you didnt create an account ", Toast.LENGTH_SHORT).show();
+            }
 
             @Override
             public void onFailure(Call<Users> call, Throwable t) {
@@ -315,17 +232,9 @@ public class signUp3 extends AppCompatActivity {
                 Intent i = new Intent(signUp3.this, MainActivity.class);
                 startActivity(i);
 
-////////////////////////  bug_fixing_for_testing
                 Toast.makeText(getApplicationContext(), "you didnt create an account ", Toast.LENGTH_SHORT).show();
             }
         });
-//////////////////////// 
-                }
-            });
-
-        }
-
-////////////////////////  master
 
     }
 
@@ -334,10 +243,6 @@ public class signUp3 extends AppCompatActivity {
 
 
 
-////////////////////////  bug_fixing_for_testing
 }
-//////////////////////// 
-    }
-////////////////////////  master
+
 */
-}

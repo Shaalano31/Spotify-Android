@@ -3,9 +3,9 @@ package com.example.spotify;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Tracks {
+public class UploadingSong {
 
-    @SerializedName("id")
+    @SerializedName("_id")
     @Expose
     private String id;
 
@@ -13,28 +13,19 @@ public class Tracks {
     @Expose
     private String trackName;
 
-    @SerializedName("imagePath")
-    @Expose
-    private String imagePath;
-
     @SerializedName("artistName")
     @Expose
     private String artistName;
 
     @SerializedName("artistId")
     @Expose
-    private String artistId;
+    private String artistID;
 
-
-
-
-
-    @SerializedName("songLink")
-    @Expose
-    private String songLink;
-
-    public String getSongLink() {
-        return songLink;
+    public UploadingSong(String id, String trackName, String artistName, String artistID) {
+        this.id = id;
+        this.trackName = trackName;
+        this.artistName = artistName;
+        this.artistID = artistID;
     }
 
     public String getId() {
@@ -53,14 +44,6 @@ public class Tracks {
         this.trackName = trackName;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
     public String getArtistName() {
         return artistName;
     }
@@ -70,13 +53,10 @@ public class Tracks {
     }
 
     public String getArtistID() {
-        return artistId;
+        return artistID;
     }
 
     public void setArtistID(String artistID) {
-        this.artistId = artistID;
+        this.artistID = artistID;
     }
-
-
-
 }
