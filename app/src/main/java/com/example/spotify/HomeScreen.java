@@ -7,6 +7,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -79,10 +80,11 @@ public class HomeScreen extends AppCompatActivity {
        ////////////////////////////////////////////////////End of the code STATIC HOME SCREEN
 
         NotificationWelcomeApi();////////*******************
+
         LocalBroadcastManager.getInstance(this).registerReceiver(onNotice, new IntentFilter("Msg"));////////*******************
 
     }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////notification log
 
     private BroadcastReceiver onNotice= new BroadcastReceiver()
     {
@@ -274,9 +276,6 @@ public class HomeScreen extends AppCompatActivity {
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 public void NotificationLogClick(View view)
 {
    Intent intent = new Intent(getApplicationContext(), NotificationListener.class);
@@ -287,13 +286,13 @@ public void NotificationLogClick(View view)
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public  void NotificationUserActionApi(View view)
+    public  void NotificationLikeAPlaylistApi(View view)
     {
         String usertoken="HZAHLHAHY_USERTOKEN_GBSUGSUG";
         final String[] Result = new String[1];
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl( "https://825c1451-4886-40aa-be4b-358a1bb44bbb.mock.pstmn.io/PushNot2/")
+                .baseUrl( "https://825c1451-4886-40aa-be4b-358a1bb44bbb.mock.pstmn.io/LikeAPlaylist/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Spotify spotify = retrofit.create(Spotify.class);
@@ -331,6 +330,52 @@ public void NotificationLogClick(View view)
         });
     }
  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ public  void NotificationAddSongApi(View view)
+ {
+     String usertoken="HZAHLHAHY_USERTOKEN_GBSUGSUG";
+     final String[] Result = new String[1];
+
+     Retrofit retrofit = new Retrofit.Builder()
+             .baseUrl( "https://825c1451-4886-40aa-be4b-358a1bb44bbb.mock.pstmn.io/AddAsong/")
+             .addConverterFactory(GsonConverterFactory.create())
+             .build();
+     Spotify spotify = retrofit.create(Spotify.class);
+
+     Call<Notifications> call= spotify.getPushnotification2(usertoken);
+     call.enqueue(new Callback<Notifications>() {
+         @Override
+         public void onResponse(Call<Notifications> call, Response<Notifications> response) {
+             if (!response.isSuccessful())
+
+             {
+                 Result[0] = String.valueOf(response.code());
+                 Toast.makeText(getApplicationContext(),"Failed,Notification:"+ response.code(), Toast.LENGTH_SHORT).show();
+                 return;
+             }
+
+             Notifications notification2= new Notifications();
+             notification2 = response.body();
+
+             String Body_Notifi =notification2.getBody();
+             String Image_Notifi=notification2.getImage();
+             String title_Notifi =notification2.getTitle();
+             String UserType__Notifi =notification2.getUserType();
+
+             // customizing the notification should be done here
+             sendOnActions (notification2);
+             ////////////////////////////////
+
+             Log.d("recieved ",notification2.getBody()+"+"+notification2.getImage()+"+"+notification2.getTitle()+"+"+notification2.getUserType());
+         }
+         @Override
+         public void onFailure(Call<Notifications> call, Throwable t) {
+             String errorMessage =t.getMessage();
+         }
+     });
+ }
+
+
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public  void NotificationShareApi(View view)
     {
         String usertoken="HZAHLHAHY_USERTOKEN_GBSUGSUG";
@@ -374,20 +419,89 @@ public void NotificationLogClick(View view)
         });
     }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public void NotificationFollowArtistApi(View view)
+{
+    String usertoken="HZAHLHAHY_USERTOKEN_GBSUGSUG";
+
+    final String[] Result = new String[1];
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl( "https://825c1451-4886-40aa-be4b-358a1bb44bbb.mock.pstmn.io/FollowArtist/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+    Spotify spotify = retrofit.create(Spotify.class);
+
+    Call<Notifications> call= spotify.getPushnotification1(usertoken);
+    call.enqueue(new Callback<Notifications>() {
+        @Override
+        public void onResponse(Call<Notifications> call, Response<Notifications> response) {
+            if (!response.isSuccessful()) {
+                Result[0] = String.valueOf(response.code());
+                Toast.makeText(getApplicationContext(),"Failed,Notification:"+ response.code(), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Notifications notification1= new Notifications();
+
+            notification1 = response.body();
+
+            String Body_Notifi=notification1.getBody();
+            String Image_Notifi=notification1.getImage();
+            String title_Notifi=notification1.getTitle();
+            String UserType__Notifi=notification1.getUserType();
+
+            // customizing the notification should be done here
+            sendOnActions(notification1);
+            ////////////////////////////////
+
+            Log.d("recieved ",notification1.getBody()+"+"+notification1.getImage()+"+"+notification1.getTitle()+"+"+notification1.getUserType());
+        }
+        @Override
+        public void onFailure(Call<Notifications> call, Throwable t) {
+            String errorMessage =t.getMessage();
+        }
+    });
+}
+
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////on click functions
 
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ///////////////////////////////////////////////1making the notification when user enter a certain activity
     public void sendOnWelcome( Notifications notification1)
     {
-        String title =  notification1.getBody();
-        String message = notification1.getTitle();
+        String title =  notification1.getTitle();
+        String message =  notification1.getBody();
+
+        Intent activityIntent = new Intent(this, HomeScreen.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this,
+                0, activityIntent, 0);
+
+
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_3_ID)
                 .setSmallIcon(R.drawable.preiumium_grey)
                 .setContentTitle(title)
                 .setContentText(message)
+                .setStyle(new NotificationCompat.BigTextStyle()
+                .bigText(message)
+                .setBigContentTitle(title))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .setContentIntent(contentIntent)
+                 .setColor(Color.GREEN)
                 .build();
         notificationManager.notify(3, notification);
 
@@ -396,13 +510,25 @@ public void NotificationLogClick(View view)
     ///////////////////////////////2 making the notification when user clicks a certain button
     public void sendOnActions( Notifications notification2)
     {
-        String title =  notification2.getBody();
-        String message = notification2.getTitle();
+        String title =  notification2.getTitle();
+        String message =  notification2.getBody();
+
+        Intent activityIntent = new Intent(this, HomeScreen.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this,
+                0, activityIntent, 0);
+
+
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
                 .setSmallIcon(R.drawable.preiumium_grey)
                 .setContentTitle(title)
                 .setContentText(message)
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(message)
+                        .setBigContentTitle(title))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .setContentIntent(contentIntent)
+                .setColor(Color.GREEN)
                 .build();
         notificationManager.notify(2, notification);
     }
@@ -425,7 +551,7 @@ void NotificationWelcomeApi()
     final String[] Result = new String[1];
 
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl( "https://825c1451-4886-40aa-be4b-358a1bb44bbb.mock.pstmn.io/PushNot1/")
+            .baseUrl( "https://825c1451-4886-40aa-be4b-358a1bb44bbb.mock.pstmn.io/EnterHomescreen/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     Spotify spotify = retrofit.create(Spotify.class);
@@ -434,11 +560,13 @@ void NotificationWelcomeApi()
     call.enqueue(new Callback<Notifications>() {
         @Override
         public void onResponse(Call<Notifications> call, Response<Notifications> response) {
-            if (!response.isSuccessful()) {
+            if (!response.isSuccessful())
+            {
                 Result[0] = String.valueOf(response.code());
                 Toast.makeText(getApplicationContext(),"Failed,Notification:"+ response.code(), Toast.LENGTH_SHORT).show();
                 return;
             }
+
             Notifications notification1= new Notifications();
 
             notification1 = response.body();

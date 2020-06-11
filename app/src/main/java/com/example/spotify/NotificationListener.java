@@ -32,7 +32,7 @@ public class NotificationListener extends AppCompatActivity {
         setContentView(R.layout.activity_notification_listener);
         tab = (TableLayout)findViewById(R.id.tab);
 
-        /////////extract  inh intent extra here
+        /////////extracting  intent extra here
         /*
         Intent oldIntent  = getIntent();  // getting the object we created in the last activity
        ArrayList<TableRow> R =(ArrayList<TableRow>)  oldIntent.getParcelableExtra("ArrayList<TableRow>") ;
