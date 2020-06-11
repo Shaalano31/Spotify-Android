@@ -175,7 +175,11 @@ public class SearchActivity extends AppCompatActivity {
                 for (int i=0; i<usersList.size(); i++) {
                     queryResultName.add(usersList.get(i).getUserName());
                     queryResultDetails.add("User");
+
             //        queryResultImage.add("http://52.14.190.202:8000/images/" + usersList.get(i).getImagePath());
+
+                    //queryResultImage.add("http://52.14.190.202:8000/images/" + usersList.get(i).getImagePath());
+
                 }
 
                 searchRecyclerAdapter.notifyDataSetChanged();

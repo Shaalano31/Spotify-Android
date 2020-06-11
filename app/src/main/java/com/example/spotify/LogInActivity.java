@@ -3,7 +3,6 @@ package com.example.spotify;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -18,20 +17,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import okhttp3.Headers;
-import okhttp3.internal.http2.Header;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -103,7 +91,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnKeyListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        usernameEditText = findViewById(R.id.usernameLoginEdittext);
+        usernameEditText = findViewById(R.id.emailLoginEdittext);
         passwordEditText = findViewById(R.id.passwordLoginEdittext);
         forgotPasswordTextView=findViewById(R.id.forgotPasswordLoginPage);
 

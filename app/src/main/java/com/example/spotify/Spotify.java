@@ -61,4 +61,20 @@ public interface Spotify {
   Call<List<Artists>> getSeveralArtists(@Header("x-auth") String txt);
 
 
+
+
+    @Headers("x-auth: eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s")
+    @POST("/artist/signup")
+    Call<Users> artistSignUp(@Body Users users);
+
+    @Headers("x-auth: eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s")
+    @POST("/artist/login")
+    Call<Users> artistLogIn(@Body Users user);
+
+    @Headers("x-auth: eyJhbGciOiJIUzI1NiJ9.QXV0aG9yaXphdGlvbmZvcmZyb250ZW5k.xEs1jjiOlwnDr4BbIvnqdphOmQTpkuUlTgJbAtQM68s")
+    @POST("/artist/signup")
+    Call<UploadingSong> uploadSong(@Body UploadingSong uploadingSong);
+
+
+
 }

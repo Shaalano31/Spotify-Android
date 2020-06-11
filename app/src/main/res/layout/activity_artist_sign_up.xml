@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".signUp">
-
+    android:background="#000000"
+    tools:context=".ArtistSignUp">
 
     <ImageView
         android:layout_width="0dp"
@@ -40,7 +39,7 @@
         android:layout_height="64dp"
         android:hint="@string/create_your_username"
 
-
+        android:imeOptions="actionDone"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline22"
         app:layout_constraintEnd_toStartOf="@+id/guideline29"
@@ -70,6 +69,7 @@
         android:hint="@string/create_your_password"
         android:inputType="textPassword"
         android:textColor="@color/white"
+        android:imeOptions="actionDone"
         app:layout_constraintBottom_toTopOf="@+id/guideline25"
         app:layout_constraintEnd_toStartOf="@+id/guideline29"
         app:layout_constraintStart_toStartOf="@+id/guideline31"
@@ -81,6 +81,7 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:background="@drawable/bn_style1"
+        android:onClick="nextButton"
         android:text="@string/next"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline27"

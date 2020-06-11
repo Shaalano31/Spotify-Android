@@ -21,7 +21,7 @@ public class Users {
     private boolean isActive;
     @SerializedName("birthDate")
     @Expose
-    private String birthDate;
+    private String dateOfBirth;
     @SerializedName("gender")
     @Expose
     private String gender;
@@ -29,6 +29,17 @@ public class Users {
     @Expose
     private String text;
 
+    public Users(String userName, String email, String password, String dateOfBirth, String gender) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+}
+
+    public Users() {
+
+    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -59,7 +70,7 @@ public class Users {
     }
 
     public String getBirthDate() {
-        return birthDate;
+        return dateOfBirth;
     }
 
     public String getGender() {
